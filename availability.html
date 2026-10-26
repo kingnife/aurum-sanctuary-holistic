@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Appointment Availability Board — Outpatient Psychiatry &amp; Therapy | Care Center</title>
+  <meta name="description" content="View real-time openings for psychiatric intake, conservative medication management, and psychotherapy in New Albany, Indiana and statewide telehealth.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://carecenternewalbany.com/availability.html">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,500;0,7..72,600;0,7..72,700;1,7..72,400&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+    <!-- Top Patient Alert (#ann) -->
+  <aside id="ann" class="announcement-bar" aria-label="Practice notification">
+    <div class="announcement-inner">
+      <div class="announcement-content">
+        <span class="ann-live-dot" aria-hidden="true">
+          <span class="pulse-indicator"></span>
+        </span>
+        <span class="announcement-text">
+          Accepting new adult &amp; adolescent patients in New Albany · Same-week in-person &amp; Indiana telehealth consultations.
+        </span>
+        <a href="availability.html" class="announcement-action">
+          <span>Check openings</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+      <button type="button" id="announcement-dismiss" class="announcement-dismiss" aria-label="Dismiss notification">
+        <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="12" y1="4" x2="4" y2="12"></line>
+          <line x1="4" y1="4" x2="12" y2="12"></line>
+        </svg>
+      </button>
+    </div>
+  </aside>
+
+  <!-- Global Frosted Header -->
+  <header class="site-header" role="banner">
+    <div class="header-inner">
+      <a href="index.html" class="brand-link brand" aria-label="Care Center home">
+        <div class="brand-icon-wrap" aria-hidden="true">
+          <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="22" cy="22" r="20" stroke="rgba(217, 181, 106, 0.4)" stroke-width="1"/>
+            <circle cx="22" cy="22" r="16.5" stroke="rgba(217, 181, 106, 0.75)" stroke-width="1.2" stroke-dasharray="2 1.5"/>
+            <circle cx="22" cy="22" r="14" fill="rgba(20, 56, 40, 0.95)"/>
+            <circle cx="22" cy="2" r="1" fill="#D9B56A"/>
+            <circle cx="22" cy="42" r="1" fill="#D9B56A"/>
+            <circle cx="2" cy="22" r="1" fill="#D9B56A"/>
+            <circle cx="42" cy="22" r="1" fill="#D9B56A"/>
+            <path d="M22 28C22 28 15 23 15 16C15 12 18 8 22 8C26 8 29 12 29 16C29 23 22 28 22 28Z" stroke="#D9B56A" stroke-width="1.4" fill="rgba(76, 197, 133, 0.18)"/>
+            <path d="M22 28V12" stroke="#E4EDE8" stroke-width="1.2" stroke-linecap="round"/>
+            <path d="M22 17C23.8 15.5 26 16 26 16" stroke="#D9B56A" stroke-width="1.1" stroke-linecap="round"/>
+            <path d="M22 21C20.2 19.5 18 20 18 20" stroke="#D9B56A" stroke-width="1.1" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="brand-text-wrap">
+          <span class="brand-name">Care Center</span>
+          <span class="brand-sublabel">PSYCHIATRY &amp; THERAPY · IN</span>
+        </div>
+      </a>
+
+      <nav id="main-nav" class="main-nav" role="navigation" aria-label="Primary navigation" data-open="false">
+        <ul class="nav-list">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="availability.html" class="nav-link is-active" aria-current="page">Availability</a></li>
+          <li><a href="about.html" class="nav-link">About &amp; providers</a></li>
+          <li><a href="insurance.html" class="nav-link">Insurance &amp; fees</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+          <li><a href="faq.html" class="nav-link">FAQ</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button type="button" id="theme-toggle-btn" class="theme-toggle-btn" aria-pressed="false" aria-label="Switch to dark theme">
+          <svg class="theme-toggle-icon theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="theme-toggle-icon theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <a href="session.html" class="btn btn-secondary btn-pill-sm">Join session</a>
+        <a href="book.html" class="btn btn-primary btn-pill-sm">Book an Intake</a>
+        <button type="button" id="mobile-nav-toggle" class="mobile-nav-toggle" aria-expanded="false" aria-label="Open navigation menu">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="section" style="padding-top: var(--space-3xl); padding-bottom: var(--space-xl); background: var(--bg-surface-sunk); border-bottom: 1px solid var(--border-subtle);">
+      <div class="section-inner">
+        <div style="max-width: 760px;">
+          <span class="section-eyebrow">Real-Time Scheduling</span>
+          <h1 class="section-title" style="font-size: var(--text-4xl);">Clinical Availability Board</h1>
+          <p class="section-lead">
+            Transparent scheduling data updated every week. Find immediate appointment openings for diagnostic evaluations, conservative pharmacotherapy, and psychotherapy.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Interactive Availability Board -->
+    <section class="section" aria-labelledby="live-board-title">
+      <div class="section-inner">
+        <div style="max-width: 900px; margin: 0 auto; background: var(--bg-surface); border-radius: var(--radius-xl); border: 1px solid var(--border-subtle); padding: var(--space-2xl); box-shadow: var(--shadow-lg);">
+          
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-xl); flex-wrap: wrap; gap: var(--space-md); border-bottom: 1px solid var(--border-subtle); padding-bottom: var(--space-lg);">
+            <div>
+              <span class="section-eyebrow" style="margin-bottom:2px;">Live Clinic Status</span>
+              <h2 id="live-board-title" style="font-family: var(--font-heading); font-size: 1.6rem; font-weight: 600; color: var(--text-primary);">
+                Southern Indiana &amp; Telehealth Schedule
+              </h2>
+              <p style="font-size: var(--text-xs); color: var(--text-muted); margin-top: 4px;">
+                Verified by Intake Coordination Office · New Albany, IN
+              </p>
+            </div>
+            <span class="avail-live-tag" style="padding: 6px 14px; font-size: 0.8rem;">
+              <span class="pulse-indicator" style="width:7px;height:7px;" aria-hidden="true"></span>
+              <span>Accepting New Clients</span>
+            </span>
+          </div>
+
+          <!-- Day by Day Pills -->
+          <div style="margin-bottom: var(--space-2xl);">
+            <p style="font-size: var(--text-sm); font-weight: 600; color: var(--text-secondary); margin-bottom: var(--space-sm);">
+              Current Week Daytime Openings (Mon–Fri)
+            </p>
+            <div class="avail-days-row" style="grid-template-columns: repeat(5, 1fr); gap: 10px;">
+              <div class="day-pill" style="padding: 12px 8px;">
+                <span class="day-pill-name" style="font-size: 0.8rem;">Monday</span>
+                <span style="font-size: var(--text-xs); color: var(--text-primary); font-weight: 600; display:block; margin: 4px 0;">3 Openings</span>
+                <span class="day-pill-status day-status-open" style="width:9px; height:9px;" title="3 Openings"></span>
+              </div>
+              <div class="day-pill" style="padding: 12px 8px;">
+                <span class="day-pill-name" style="font-size: 0.8rem;">Tuesday</span>
+                <span style="font-size: var(--text-xs); color: var(--text-primary); font-weight: 600; display:block; margin: 4px 0;">2 Openings</span>
+                <span class="day-pill-status day-status-open" style="width:9px; height:9px;" title="2 Openings"></span>
+              </div>
+              <div class="day-pill" style="padding: 12px 8px;">
+                <span class="day-pill-name" style="font-size: 0.8rem;">Wednesday</span>
+                <span style="font-size: var(--text-xs); color: var(--text-primary); font-weight: 600; display:block; margin: 4px 0;">Telehealth</span>
+                <span class="day-pill-status day-status-limited" style="width:9px; height:9px;" title="Telehealth Only"></span>
+              </div>
+              <div class="day-pill" style="padding: 12px 8px;">
+                <span class="day-pill-name" style="font-size: 0.8rem;">Thursday</span>
+                <span style="font-size: var(--text-xs); color: var(--text-primary); font-weight: 600; display:block; margin: 4px 0;">4 Openings</span>
+                <span class="day-pill-status day-status-open" style="width:9px; height:9px;" title="4 Openings"></span>
+              </div>
+              <div class="day-pill" style="padding: 12px 8px;">
+                <span class="day-pill-name" style="font-size: 0.8rem;">Friday</span>
+                <span style="font-size: var(--text-xs); color: var(--text-primary); font-weight: 600; display:block; margin: 4px 0;">1 Opening</span>
+                <span class="day-pill-status day-status-open" style="width:9px; height:9px;" title="1 Opening"></span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Service Breakdown Cards -->
+          <div style="display: flex; flex-direction: column; gap: var(--space-md); margin-bottom: var(--space-2xl);">
+            <!-- Row 1 -->
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: var(--space-lg); background: var(--bg-page); border: 1.5px solid var(--border-subtle); border-radius: var(--radius-md); flex-wrap: wrap; gap: var(--space-md);">
+              <div style="max-width: 520px;">
+                <strong style="font-size: 1.1rem; color: var(--text-primary); display:block; margin-bottom: 4px;">
+                  New Patient Psychiatric Intake (60 Min)
+                </strong>
+                <p style="font-size: var(--text-xs); color: var(--text-secondary); line-height: 1.6;">
+                  Physician-led diagnostic evaluation. Average lead time for new patient appointments is 3 to 5 business days. In-person at our New Albany clinic or secure telehealth.
+                </p>
+              </div>
+              <div style="display: flex; align-items: center; gap: var(--space-md);">
+                <span class="status-badge status-badge-open" style="padding: 6px 12px;">
+                  <span class="pulse-indicator" style="width:6px;height:6px;" aria-hidden="true"></span>
+                  <span>3 Openings This Week</span>
+                </span>
+                <a href="book.html" class="btn btn-primary btn-pill-sm">Reserve Slot</a>
+              </div>
+            </div>
+
+            <!-- Row 2 -->
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: var(--space-lg); background: var(--bg-page); border: 1.5px solid var(--border-subtle); border-radius: var(--radius-md); flex-wrap: wrap; gap: var(--space-md);">
+              <div style="max-width: 520px;">
+                <strong style="font-size: 1.1rem; color: var(--text-primary); display:block; margin-bottom: 4px;">
+                  Conservative Medication Follow-Up (30 Min)
+                </strong>
+                <p style="font-size: var(--text-xs); color: var(--text-secondary); line-height: 1.6;">
+                  For established patients undergoing pharmacotherapy review and dosage adjustments. Priority scheduling maintained for ongoing care continuity.
+                </p>
+              </div>
+              <div style="display: flex; align-items: center; gap: var(--space-md);">
+                <span class="status-badge status-badge-limited" style="padding: 6px 12px;">Limited Openings</span>
+                <a href="book.html" class="btn btn-secondary btn-pill-sm">Request Follow-Up</a>
+              </div>
+            </div>
+
+            <!-- Row 3 -->
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: var(--space-lg); background: var(--bg-page); border: 1.5px solid var(--border-subtle); border-radius: var(--radius-md); flex-wrap: wrap; gap: var(--space-md);">
+              <div style="max-width: 520px;">
+                <strong style="font-size: 1.1rem; color: var(--text-primary); display:block; margin-bottom: 4px;">
+                  Integrative Psychotherapy &amp; EMDR (50 Min)
+                </strong>
+                <p style="font-size: var(--text-xs); color: var(--text-secondary); line-height: 1.6;">
+                  Individual counseling sessions with Sarah Lin-Holloway, LCSW. Morning and late-afternoon appointment slots currently available.
+                </p>
+              </div>
+              <div style="display: flex; align-items: center; gap: var(--space-md);">
+                <span class="status-badge status-badge-open" style="padding: 6px 12px;">
+                  <span class="pulse-indicator" style="width:6px;height:6px;" aria-hidden="true"></span>
+                  <span>Openings This Week</span>
+                </span>
+                <a href="book.html" class="btn btn-primary btn-pill-sm">Reserve Slot</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom Notice -->
+          <div style="background: var(--bg-surface-sunk); padding: var(--space-md) var(--space-lg); border-radius: var(--radius-sm); border: 1px solid var(--border-subtle); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: var(--space-sm); font-size: var(--text-xs); color: var(--text-muted);">
+            <div>
+              <strong>Need a specific clinician or evening slot?</strong> Speak with our intake team or join our priority notification list.
+            </div>
+            <a href="contact.html" style="color: var(--brand-primary); font-weight: 600; text-decoration: underline;">Contact intake office</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Crisis Banner & Footer -->
+  <footer class="site-footer" role="contentinfo">
+    <aside class="crisis-bar" aria-label="Crisis safety lifeline instructions">
+      <div class="crisis-bar-inner">
+        <span class="crisis-badge">Crisis Safety Protocol</span>
+        <p class="crisis-statement">
+          If you or a loved one are experiencing an acute mental health crisis, please dial or text <strong>988</strong> to connect immediately with the Suicide &amp; Crisis Lifeline, or call <strong>911</strong> for an emergency.
+        </p>
+        <span class="crisis-disclaimer">Care Center is an outpatient facility; this service is not for emergencies.</span>
+      </div>
+    </aside>
+
+    <div class="footer-content">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <p class="footer-brand-title">Care Center</p>
+          <p class="footer-brand-desc">
+            Boutique outpatient psychiatry, conservative medication management, and psychotherapy serving Southern Indiana and greater Louisville.
+          </p>
+          <address class="footer-address">
+            120 E. Market Street, Suite 300<br>
+            New Albany, IN 47150<br>
+            Direct Phone: <a href="tel:8129442273">(812) 944-CARE (2273)</a><br>
+            Intake Email: <a href="mailto:intake@carecenternewalbany.com">intake@carecenternewalbany.com</a>
+          </address>
+        </div>
+
+        <div>
+          <p class="footer-col-title">Care &amp; Visits</p>
+          <ul class="footer-links">
+            <li><a href="services.html">Comprehensive evaluation</a></li>
+            <li><a href="services.html">Medication management</a></li>
+            <li><a href="services.html">Integrative psychotherapy</a></li>
+            <li><a href="availability.html">Weekly schedule board</a></li>
+            <li><a href="book.html">Book an intake appointment</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="footer-col-title">Practice Governance</p>
+          <ul class="footer-links">
+            <li><a href="about.html">Physicians &amp; directors</a></li>
+            <li><a href="insurance.html">In-network insurance plans</a></li>
+            <li><a href="insurance.html">Superbill concierge services</a></li>
+            <li><a href="faq.html">Frequently asked questions</a></li>
+            <li><a href="contact.html">Directions &amp; parking</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <p class="footer-col-title">Patient Portals</p>
+          <ul class="footer-links">
+            <li><a href="book.html">White-glove intake stepper</a></li>
+            <li><a href="session.html">Virtual waiting room login</a></li>
+            <li><a href="#" data-open-concierge>Care Concierge AI drawer</a></li>
+            <li><span>Encrypted 256-Bit SSL</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Care Center LLC. All rights reserved. Specialized psychiatric medical care.</p>
+        <ul class="footer-legal-links">
+          <li><a href="privacy.html">HIPAA Notice of Privacy Practices</a></li>
+          <li><a href="terms.html">Patient Portal Terms</a></li>
+          <li><a href="rights.html">Patient Rights</a></li>
+          <li><a href="consent.html">Consent to Telehealth</a></li>
+        </ul>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Care Concierge Drawer -->
+  <div id="er" class="concierge-drawer" aria-hidden="true" role="dialog" aria-labelledby="concierge-title">
+    <div class="concierge-header">
+      <div class="concierge-profile">
+        <picture>
+          <source srcset="assets/img/concierge-avatar.webp" type="image/webp">
+          <img src="assets/img/concierge-avatar.jpg" alt="Care Concierge specialist avatar" class="concierge-avatar" width="42" height="42">
+        </picture>
+        <div>
+          <h2 id="concierge-title" class="concierge-name">Care Concierge</h2>
+          <span class="concierge-status">
+            <span class="pulse-indicator" style="width:6px;height:6px;background:#42C284;" aria-hidden="true"></span>
+            <span>Intake Team · Online now</span>
+          </span>
+        </div>
+      </div>
+      <button type="button" id="concierge-close" class="concierge-close-btn" aria-label="Close concierge drawer">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <div id="concierge-stream" class="concierge-stream" role="log" aria-live="polite">
+      <div class="chat-bubble chat-bubble-bot">
+        Welcome to Care Center. I am your Care Concierge. How may our intake team support your mental wellness journey today?
+      </div>
+    </div>
+
+    <div class="concierge-quick-chips" aria-label="Suggested inquiries">
+      <button type="button" class="quick-chip" data-query="Insurance Verification">Insurance Verification</button>
+      <button type="button" class="quick-chip" data-query="First Appointment Expectations">First Appointment Expectations</button>
+      <button type="button" class="quick-chip" data-query="Directions &amp; Parking">Directions &amp; Parking</button>
+      <button type="button" class="quick-chip" data-query="Telehealth Setup">Telehealth Setup</button>
+    </div>
+
+    <form id="concierge-form" class="concierge-input-form">
+      <input type="text" id="concierge-input" class="concierge-input" placeholder="Ask a question about our practice..." aria-label="Your question for Care Concierge" autocomplete="off">
+      <button type="submit" class="concierge-send-btn" aria-label="Send message">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+    </form>
+  </div>
+
+  <button type="button" id="concierge-launcher" class="concierge-launch-btn" aria-label="Open Care Concierge chat">
+    <span class="pulse-indicator" style="width:7px;height:7px;background:#42C284;" aria-hidden="true"></span>
+    <span>Care Concierge</span>
+  </button>
+
+  <script src="assets/js/theme.js" defer></script>
+  <script src="assets/js/announcement.js" defer></script>
+  <script src="assets/js/app.js" defer></script>
+</body>
+</html>
