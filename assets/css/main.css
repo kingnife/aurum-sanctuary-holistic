@@ -91,6 +91,10 @@ a {
 
 #ann,
 .announcement-bar {
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: clip;
+  box-sizing: border-box;
   background: #081511;
   color: rgba(245, 247, 246, 0.92);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
@@ -114,8 +118,9 @@ a {
 .announcement-inner,
 .bar-ann {
   width: 100%;
-  max-width: 1360px;
+  max-width: 1320px;
   margin: 0 auto;
+  box-sizing: border-box;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -214,6 +219,10 @@ header,
   position: sticky;
   top: 0;
   z-index: 100;
+  width: 100%;
+  max-width: 100vw;
+  overflow-x: clip;
+  box-sizing: border-box;
   background: rgba(247, 244, 238, 0.72);
   backdrop-filter: blur(24px) saturate(160%);
   -webkit-backdrop-filter: blur(24px) saturate(160%);
@@ -233,15 +242,16 @@ header,
 
 .bar,
 .header-inner {
-  max-width: 1360px;
+  width: 100%;
+  max-width: 1320px;
   margin: 0 auto;
-  padding: 14px 32px;
+  padding: 12px clamp(16px, 2vw, 28px);
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
+  gap: clamp(10px, 1.2vw, 20px);
+  box-sizing: border-box;
   flex-wrap: nowrap;
-  width: 100%;
 }
 
 /* ==========================================================================
@@ -252,7 +262,7 @@ header,
 .brand-link {
   display: inline-flex;
   align-items: center;
-  gap: 14px;
+  gap: clamp(8px, 1vw, 12px);
   text-align: left;
   flex-shrink: 0;
   text-decoration: none;
@@ -260,8 +270,8 @@ header,
 }
 
 .brand-icon-wrap {
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -276,8 +286,8 @@ header,
 }
 
 .brand-icon-wrap svg {
-  width: 44px;
-  height: 44px;
+  width: 40px;
+  height: 40px;
   display: block;
 }
 
@@ -289,7 +299,7 @@ header,
 .brand-name {
   white-space: nowrap;
   font-family: var(--serif);
-  font-size: 1.35rem;
+  font-size: clamp(1.2rem, 1.25vw, 1.35rem);
   font-weight: 600;
   line-height: 1.1;
   letter-spacing: -0.02em;
@@ -304,12 +314,12 @@ header,
   display: block;
   white-space: nowrap;
   font-family: var(--sans);
-  font-size: 0.66rem;
+  font-size: clamp(0.58rem, 0.62vw, 0.65rem);
   font-weight: 600;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--text2);
-  margin-top: 4px;
+  margin-top: 3px;
 }
 
 [data-theme="dark"] .brand-sublabel {
@@ -324,13 +334,15 @@ nav.main-nav,
 nav {
   display: inline-flex;
   align-items: center;
+  flex-shrink: 1;
+  min-width: 0;
 }
 
 .nav-list {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  padding: 6px;
+  gap: 2px;
+  padding: 4px 6px;
   border-radius: 999px;
   background: rgba(255, 255, 255, 0.45);
   border: 1px solid rgba(22, 33, 30, 0.09);
@@ -351,10 +363,10 @@ nav button,
 nav a,
 .nav-link {
   white-space: nowrap;
-  height: 38px;
-  padding: 0 15px;
+  height: 36px;
+  padding: 0 clamp(8px, 0.85vw, 13px);
   border-radius: 999px;
-  font: 500 0.88rem/1 var(--sans);
+  font: 500 clamp(0.8rem, 0.82vw, 0.86rem)/1 var(--sans);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -409,15 +421,15 @@ nav a.is-active,
 .header-actions {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: clamp(6px, 0.75vw, 10px);
   flex-shrink: 0;
 }
 
 #theme,
 #theme-toggle-btn,
 .theme-toggle-btn {
-  width: 42px;
-  height: 42px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   padding: 0;
   display: inline-flex;
@@ -454,8 +466,8 @@ nav a.is-active,
 }
 
 .theme-toggle-icon {
-  width: 18px;
-  height: 18px;
+  width: 17px;
+  height: 17px;
   fill: currentColor;
 }
 
@@ -468,11 +480,11 @@ nav a.is-active,
 /* Secondary Button (Join session) */
 .header-actions .btn-secondary,
 .header-actions a[href="session.html"] {
-  height: 42px;
-  padding: 0 20px;
+  height: 38px;
+  padding: 0 clamp(12px, 1.1vw, 18px);
   border-radius: 999px;
   white-space: nowrap;
-  font: 600 0.88rem var(--sans);
+  font: 600 clamp(0.8rem, 0.82vw, 0.86rem) var(--sans);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -509,11 +521,11 @@ nav a.is-active,
 /* Primary Button (Book an Intake) */
 .header-actions .btn-primary,
 .header-actions a[href="book.html"] {
-  height: 42px;
-  padding: 0 22px;
+  height: 38px;
+  padding: 0 clamp(14px, 1.3vw, 20px);
   border-radius: 999px;
   white-space: nowrap;
-  font: 600 0.88rem var(--sans);
+  font: 600 clamp(0.8rem, 0.82vw, 0.86rem) var(--sans);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -542,8 +554,8 @@ nav a.is-active,
   border: 1px solid rgba(22, 33, 30, 0.1);
   color: var(--text);
   cursor: pointer;
-  width: 42px;
-  height: 42px;
+  width: 38px;
+  height: 38px;
   border-radius: 50%;
   align-items: center;
   justify-content: center;
@@ -561,10 +573,10 @@ nav a.is-active,
   color: #FAF8F5;
 }
 
-@media (max-width: 1180px) {
+@media (max-width: 1140px) {
   .bar,
   .header-inner {
-    padding: 12px 20px;
+    padding: 10px 18px;
   }
 
   .mobile-nav-toggle {
@@ -652,17 +664,17 @@ nav a.is-active,
 
   .header-actions .btn-primary,
   .header-actions a[href="book.html"] {
-    height: 38px;
-    padding: 0 16px;
-    font-size: 0.82rem;
+    height: 36px;
+    padding: 0 14px;
+    font-size: 0.8rem;
   }
 
   .brand-name {
-    font-size: 1.18rem;
+    font-size: 1.15rem;
   }
 
   .brand-sublabel {
-    font-size: 0.58rem;
+    font-size: 0.56rem;
   }
 }
 
