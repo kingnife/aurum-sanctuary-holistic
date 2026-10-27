@@ -17,9 +17,11 @@
   --accent-gold: #C4933B;               /* Muted clinic gold */
 
   /* Surfaces & Canvas (Quiet Luxury) */
+  --bg-canvas: #FAF8F5;
   --bg-page: #FAF8F5;                   /* Warm Alabaster */
   --bg-surface: #FFFFFF;                /* Pure Paper */
   --bg-surface-sunk: #F2EFE9;           /* Soft Stone */
+  --bg-glass-card: rgba(255, 255, 255, 0.62);
   --brand-cypress: #11221D;             /* Deep Cypress */
   --bg-surface-glass: rgba(255, 255, 255, 0.82);
   --bg-header-glass: rgba(250, 248, 245, 0.88);
@@ -36,6 +38,10 @@
   --glass-border: rgba(255, 255, 255, 0.65);
   --glass-highlight: inset 0 1px 0 0 rgba(255, 255, 255, 0.8);
   --glass-shadow: 0 16px 40px -10px rgba(22, 33, 30, 0.08);
+  --border-hairline: rgba(17, 34, 29, 0.08);
+  --border-highlight: rgba(39, 100, 70, 0.35);
+  --shadow-hud: 0 16px 40px -10px rgba(22, 33, 30, 0.08), inset 0 1px 0 0 rgba(255, 255, 255, 0.8);
+  --text-accent: #C4933B;
 
   /* Typography Colors */
   --text-primary: #11221D;              /* Deep Cypress Ink */
@@ -126,137 +132,157 @@
   --transition-smooth: 420ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Dark Mode Tokens */
+/* Dark Mode Tokens (Luminous Cypress Obsidian) */
 [data-theme="dark"] {
-  --brand-primary: #2E9E68;
-  --brand-hover: #3EB67C;
-  --brand-active: #248154;
-  --brand-glow: rgba(46, 158, 104, 0.25);
-  --brand-focus-ring: rgba(62, 182, 124, 0.45);
+  --brand-primary: #38B273;
+  --brand-hover: #4CC585;
+  --brand-active: #2E9E68;
+  --brand-glow: rgba(56, 178, 115, 0.30);
+  --brand-focus-ring: rgba(76, 197, 133, 0.50);
 
-  --accent-eucalyptus: #7FAAA0;
-  --accent-mint: #1A362E;
-  --accent-gold: #DEB163;
+  --accent-eucalyptus: #8EC4B5;
+  --accent-mint: rgba(46, 125, 91, 0.24);
+  --accent-gold: #EEDAA2;
 
-  --bg-page: #091412;                   /* Deep Obsidian Forest */
-  --bg-surface: #0F201C;                /* Elevated obsidian */
-  --bg-surface-sunk: #07100E;           /* Sunk deep */
-  --bg-surface-glass: rgba(15, 32, 28, 0.85);
-  --bg-header-glass: rgba(9, 20, 18, 0.88);
-  --bg-announcement: #0D261F;
+  /* Atmospheric Backgrounds */
+  --bg-canvas: #06100D;
+  --bg-page: #06100D;
+  --bg-surface: rgba(18, 36, 30, 0.65);
+  --bg-surface-sunk: #040A08;
+  --bg-glass-card: rgba(14, 28, 24, 0.72);
+  --bg-surface-glass: rgba(18, 36, 30, 0.72);
+  --bg-header-glass: rgba(6, 16, 13, 0.88);
+  --bg-announcement: #0A1C16;
+
+  /* Contour Highlights & Specs (Specular Glass Borders) */
+  --border-hairline: rgba(255, 255, 255, 0.14);
+  --border-highlight: rgba(46, 125, 91, 0.45);
+  --border-subtle: rgba(255, 255, 255, 0.12);
+  --border-glass: rgba(255, 255, 255, 0.16);
+  --border-glass-dark: rgba(255, 255, 255, 0.10);
+  --border-focus: #4CC585;
+
+  --shadow-hud: 0 20px 50px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 12px 36px -4px rgba(0, 0, 0, 0.65);
+  --shadow-lg: 0 25px 60px -12px rgba(0, 0, 0, 0.8);
+  --shadow-glass: 0 20px 50px rgba(0, 0, 0, 0.65);
+  --shadow-button: 0 4px 14px rgba(46, 158, 104, 0.35);
+  --shadow-button-hover: 0 8px 24px rgba(46, 158, 104, 0.5);
+
+  /* Accessibility-Compliant Typography Contrast */
+  --text-primary: #F5F7F6;
+  --text-secondary: #C4D1CC;
+  --text-accent: #EEDAA2;
+  --text-muted: #95A8A0;
+  --text-inverse: #06100D;
+  --text: #F5F7F6;
+  --text2: #C4D1CC;
 
   /* Warm Architectural Counter-Tones (Dark Mode) */
-  --warm-linen: #141C1A;
-  --travertine-gold: #1A2622;
-  --sunlight-amber: rgba(222, 177, 99, 0.15);
-  --smoked-cypress: #081512;
-  --warm-cedar-light: rgba(212, 163, 115, 0.12);
-  --glass-bg: rgba(18, 38, 32, 0.52);
-  --glass-border: rgba(255, 255, 255, 0.14);
-  --glass-highlight: inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
-  --glass-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.45);
-
-  --text-primary: #FAF8F5;              /* Clean warm paper */
-  --text-secondary: #C8D7D1;
-  --text-muted: #8AA49B;
-  --text-inverse: #091412;
-  --text: #FAF8F5;
-  --text2: #C8D7D1;
-
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-glass: rgba(255, 255, 255, 0.15);
-  --border-glass-dark: rgba(255, 255, 255, 0.08);
-  --border-focus: #3EB67C;
-
-  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-  --shadow-md: 0 10px 30px -4px rgba(0, 0, 0, 0.5);
-  --shadow-lg: 0 24px 54px -12px rgba(0, 0, 0, 0.65);
-  --shadow-glass: 0 20px 48px rgba(0, 0, 0, 0.6);
-  --shadow-button: 0 4px 14px rgba(46, 158, 104, 0.3);
-  --shadow-button-hover: 0 8px 24px rgba(46, 158, 104, 0.45);
+  --warm-linen: #101E1A;
+  --travertine-gold: #162420;
+  --champagne-gold: #EEDAA2;
+  --sunlight-amber: rgba(238, 218, 162, 0.18);
+  --smoked-cypress: #06100D;
+  --warm-cedar-light: rgba(212, 163, 115, 0.15);
+  --glass-bg: var(--bg-glass-card);
+  --glass-border: var(--border-hairline);
+  --glass-highlight: inset 0 1px 0 0 rgba(255, 255, 255, 0.22);
+  --glass-shadow: var(--shadow-hud);
 
   --status-open: #42C284;
-  --status-open-bg: #123326;
+  --status-open-bg: rgba(46, 125, 91, 0.25);
   --status-open-text: #B4E8D0;
 
-  --status-limited: #DEB163;
-  --status-limited-bg: #352914;
+  --status-limited: #EEDAA2;
+  --status-limited-bg: rgba(222, 177, 99, 0.2);
   --status-limited-text: #F3E0BD;
 
   --status-full: #8CAEA5;
   --status-full-bg: #1D332D;
   --status-full-text: #C4DBD5;
 
-  --crisis-bg: #271E19;
-  --crisis-text: #F4E8DF;
-  --crisis-border: rgba(214, 163, 140, 0.2);
+  --crisis-bg: #1A120E;
+  --crisis-text: #F5EAE1;
+  --crisis-border: rgba(214, 163, 140, 0.25);
   --crisis-badge-bg: #A3654D;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --brand-primary: #2E9E68;
-    --brand-hover: #3EB67C;
-    --brand-active: #248154;
-    --brand-glow: rgba(46, 158, 104, 0.25);
-    --brand-focus-ring: rgba(62, 182, 124, 0.45);
+    --brand-primary: #38B273;
+    --brand-hover: #4CC585;
+    --brand-active: #2E9E68;
+    --brand-glow: rgba(56, 178, 115, 0.30);
+    --brand-focus-ring: rgba(76, 197, 133, 0.50);
 
-    --accent-eucalyptus: #7FAAA0;
-    --accent-mint: #1A362E;
-    --accent-gold: #DEB163;
+    --accent-eucalyptus: #8EC4B5;
+    --accent-mint: rgba(46, 125, 91, 0.24);
+    --accent-gold: #EEDAA2;
 
-    --bg-page: #091412;
-    --bg-surface: #0F201C;
-    --bg-surface-sunk: #07100E;
-    --bg-surface-glass: rgba(15, 32, 28, 0.85);
-    --bg-header-glass: rgba(9, 20, 18, 0.88);
-    --bg-announcement: #0D261F;
+    /* Atmospheric Backgrounds */
+    --bg-canvas: #06100D;
+    --bg-page: #06100D;
+    --bg-surface: rgba(18, 36, 30, 0.65);
+    --bg-surface-sunk: #040A08;
+    --bg-glass-card: rgba(14, 28, 24, 0.72);
+    --bg-surface-glass: rgba(18, 36, 30, 0.72);
+    --bg-header-glass: rgba(6, 16, 13, 0.88);
+    --bg-announcement: #0A1C16;
+
+    /* Contour Highlights & Specs (Specular Glass Borders) */
+    --border-hairline: rgba(255, 255, 255, 0.14);
+    --border-highlight: rgba(46, 125, 91, 0.45);
+    --border-subtle: rgba(255, 255, 255, 0.12);
+    --border-glass: rgba(255, 255, 255, 0.16);
+    --border-glass-dark: rgba(255, 255, 255, 0.10);
+    --border-focus: #4CC585;
+
+    --shadow-hud: 0 20px 50px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.22);
+    --shadow-sm: 0 2px 10px rgba(0, 0, 0, 0.5);
+    --shadow-md: 0 12px 36px -4px rgba(0, 0, 0, 0.65);
+    --shadow-lg: 0 25px 60px -12px rgba(0, 0, 0, 0.8);
+    --shadow-glass: 0 20px 50px rgba(0, 0, 0, 0.65);
+    --shadow-button: 0 4px 14px rgba(46, 158, 104, 0.35);
+    --shadow-button-hover: 0 8px 24px rgba(46, 158, 104, 0.5);
+
+    /* Accessibility-Compliant Typography Contrast */
+    --text-primary: #F5F7F6;
+    --text-secondary: #C4D1CC;
+    --text-accent: #EEDAA2;
+    --text-muted: #95A8A0;
+    --text-inverse: #06100D;
+    --text: #F5F7F6;
+    --text2: #C4D1CC;
 
     /* Warm Architectural Counter-Tones (Dark Mode) */
-    --warm-linen: #141C1A;
-    --travertine-gold: #1A2622;
-    --sunlight-amber: rgba(222, 177, 99, 0.15);
-    --smoked-cypress: #081512;
-    --warm-cedar-light: rgba(212, 163, 115, 0.12);
-    --glass-bg: rgba(18, 38, 32, 0.52);
-    --glass-border: rgba(255, 255, 255, 0.14);
-    --glass-highlight: inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
-    --glass-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.45);
-
-    --text-primary: #FAF8F5;
-    --text-secondary: #C8D7D1;
-    --text-muted: #8AA49B;
-    --text-inverse: #091412;
-    --text: #FAF8F5;
-    --text2: #C8D7D1;
-
-    --border-subtle: rgba(255, 255, 255, 0.08);
-    --border-glass: rgba(255, 255, 255, 0.15);
-    --border-glass-dark: rgba(255, 255, 255, 0.08);
-    --border-focus: #3EB67C;
-
-    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
-    --shadow-md: 0 10px 30px -4px rgba(0, 0, 0, 0.5);
-    --shadow-lg: 0 24px 54px -12px rgba(0, 0, 0, 0.65);
-    --shadow-glass: 0 20px 48px rgba(0, 0, 0, 0.6);
-    --shadow-button: 0 4px 14px rgba(46, 158, 104, 0.3);
-    --shadow-button-hover: 0 8px 24px rgba(46, 158, 104, 0.45);
+    --warm-linen: #101E1A;
+    --travertine-gold: #162420;
+    --champagne-gold: #EEDAA2;
+    --sunlight-amber: rgba(238, 218, 162, 0.18);
+    --smoked-cypress: #06100D;
+    --warm-cedar-light: rgba(212, 163, 115, 0.15);
+    --glass-bg: var(--bg-glass-card);
+    --glass-border: var(--border-hairline);
+    --glass-highlight: inset 0 1px 0 0 rgba(255, 255, 255, 0.22);
+    --glass-shadow: var(--shadow-hud);
 
     --status-open: #42C284;
-    --status-open-bg: #123326;
+    --status-open-bg: rgba(46, 125, 91, 0.25);
     --status-open-text: #B4E8D0;
 
-    --status-limited: #DEB163;
-    --status-limited-bg: #352914;
+    --status-limited: #EEDAA2;
+    --status-limited-bg: rgba(222, 177, 99, 0.2);
     --status-limited-text: #F3E0BD;
 
     --status-full: #8CAEA5;
     --status-full-bg: #1D332D;
     --status-full-text: #C4DBD5;
 
-    --crisis-bg: #271E19;
-    --crisis-text: #F4E8DF;
-    --crisis-border: rgba(214, 163, 140, 0.2);
+    --crisis-bg: #1A120E;
+    --crisis-text: #F5EAE1;
+    --crisis-border: rgba(214, 163, 140, 0.25);
     --crisis-badge-bg: #A3654D;
   }
 }
