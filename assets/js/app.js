@@ -79,21 +79,45 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
 
-    e.preventDefault();
     const go = trigger.getAttribute('data-go');
     const sec = trigger.getAttribute('data-sec');
+    const viewId = go.startsWith('v-') ? go : `v-${go}`;
 
-    showView(go, sec);
+    // If the target view exists in the current DOM, intercept as instant SPA page-like transition
+    if (document.getElementById(viewId)) {
+      e.preventDefault();
+      showView(go, sec);
 
-    // Update URL hash cleanly
-    if (go === 'home') {
-      if (sec) {
-        history.pushState(null, '', `#${sec}`);
+      // Update URL hash cleanly
+      if (go === 'home') {
+        if (sec) {
+          history.pushState(null, '', `#${sec}`);
+        } else {
+          history.pushState(null, '', window.location.pathname);
+        }
       } else {
-        history.pushState(null, '', window.location.pathname);
+        history.pushState(null, '', `#${viewId}`);
       }
-    } else {
-      history.pushState(null, '', `#v-${go}`);
+    }
+    // Otherwise, allow native browser navigation to the href attribute!
+  });
+
+  // Deep-link routing on initial page load
+  const initialHash = window.location.hash.replace(/^#v-|^#/, '');
+  if (initialHash && document.getElementById(`v-${initialHash}`)) {
+    showView(initialHash);
+  } else if (initialHash && document.getElementById(initialHash)) {
+    setTimeout(() => {
+      const el = document.getElementById(initialHash);
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }, 120);
+  }
+
+  // Browser back/forward button navigation
+  window.addEventListener('popstate', () => {
+    const hash = window.location.hash.replace(/^#v-|^#/, '') || 'home';
+    if (document.getElementById(`v-${hash}`)) {
+      showView(hash);
     }
   });
 

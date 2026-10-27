@@ -64,13 +64,13 @@
       <!-- Center Floating Navigation Pill -->
       <nav id="main-nav" class="main-nav" role="navigation" aria-label="Primary navigation" data-open="false">
         <ul class="nav-list">
-          <li><a href="index.html" class="nav-link">Home</a></li>
-          <li><a href="services.html" class="nav-link">Services</a></li>
-          <li><a href="availability.html" class="nav-link">Availability</a></li>
-          <li><a href="about.html" class="nav-link is-active" aria-current="page">Providers</a></li>
-          <li><a href="insurance.html" class="nav-link">Insurance &amp; Fees</a></li>
-          <li><a href="contact.html" class="nav-link">Contact</a></li>
-          <li><a href="faq.html" class="nav-link">FAQ</a></li>
+          <li><a href="index.html" class="nav-link" data-go="home">Home</a></li>
+          <li><a href="services.html" class="nav-link" data-go="services">Services</a></li>
+          <li><a href="availability.html" class="nav-link" data-go="avail">Availability</a></li>
+          <li><a href="about.html" class="nav-link is-active" data-go="providers" aria-current="page">Providers</a></li>
+          <li><a href="insurance.html" class="nav-link" data-go="insurance">Insurance &amp; Fees</a></li>
+          <li><a href="contact.html" class="nav-link" data-go="contact">Contact</a></li>
+          <li><a href="faq.html" class="nav-link" data-go="faq">FAQ</a></li>
         </ul>
       </nav>
 
@@ -94,8 +94,8 @@
           </svg>
         </button>
 
-        <a href="session.html" class="btn btn-secondary">Join session</a>
-        <a href="book.html" class="btn btn-primary">Book an Intake</a>
+        <a href="session.html" class="btn btn-secondary" data-go="join">Join session</a>
+        <a href="book.html" class="btn btn-primary" data-go="book">Book an Intake</a>
 
         <button type="button" id="mobile-nav-toggle" class="mobile-nav-toggle" aria-expanded="false" aria-label="Open navigation menu">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">

@@ -831,8 +831,196 @@ section.view.page .form {
   margin: 0 auto;
 }
 
+.view-page-container.is-wide {
+  max-width: 1240px;
+}
+
 .view-page-nav {
-  margin-bottom: 20px;
+  margin-bottom: clamp(20px, 3vw, 36px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.view-nav-breadcrumb {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.view-nav-breadcrumb .sep {
+  opacity: 0.45;
+}
+
+.view-nav-breadcrumb .current {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.view-hero-header {
+  margin-bottom: var(--space-3xl);
+  text-align: left;
+}
+
+.view-hero-header .section-eyebrow {
+  margin-bottom: 6px;
+  display: inline-block;
+}
+
+.view-hero-header .section-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.15;
+  margin-bottom: var(--space-sm);
+}
+
+.view-hero-header .section-lead {
+  max-width: 760px;
+  font-size: var(--text-lg);
+  color: var(--text-secondary);
+  line-height: 1.65;
+}
+
+/* Sanctuary Directory Grid on Homepage */
+.sanctuary-directory-section {
+  padding: clamp(60px, 8vw, 110px) 0;
+  position: relative;
+  background: var(--bg-surface-sunk);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.sanctuary-directory-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(16px, 2vw, 28px);
+}
+
+@media (max-width: 980px) {
+  .sanctuary-directory-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .sanctuary-directory-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.directory-card {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(24px, 2.8vw, 36px);
+  border-radius: var(--radius-xl);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-sm);
+  text-decoration: none;
+  transition: all var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.directory-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--brand-accent), transparent);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.directory-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-highlight, rgba(46, 125, 91, 0.45));
+  box-shadow: var(--shadow-hud);
+}
+
+.directory-card:hover::before {
+  opacity: 1;
+}
+
+.directory-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-md);
+  background: rgba(46, 125, 91, 0.12);
+  color: var(--brand-accent);
+  border: 1px solid rgba(46, 125, 91, 0.25);
+  transition: all var(--transition-fast);
+}
+
+[data-theme="dark"] .directory-icon-box {
+  background: rgba(46, 125, 91, 0.24);
+  color: #4CC585;
+  border-color: rgba(46, 125, 91, 0.45);
+}
+
+.directory-card:hover .directory-icon-box {
+  transform: scale(1.05);
+  background: rgba(46, 125, 91, 0.22);
+}
+
+.directory-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--brand-accent);
+  margin-bottom: 6px;
+}
+
+[data-theme="dark"] .directory-badge {
+  color: #EEDAA2;
+}
+
+.directory-title {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+  line-height: 1.25;
+}
+
+.directory-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: var(--space-lg);
+  flex-grow: 1;
+}
+
+.directory-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.86rem;
+  font-weight: 600;
+  color: var(--brand-primary);
+  transition: transform var(--transition-fast);
+}
+
+[data-theme="dark"] .directory-action {
+  color: #EEDAA2;
+}
+
+.directory-card:hover .directory-action {
+  transform: translateX(4px);
 }
 
 .btn-return-home {
