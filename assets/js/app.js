@@ -371,10 +371,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const vBook = document.getElementById('v-book');
     const vJoin = document.getElementById('v-join');
     if (vBook) {
-      vBook.style.setProperty('--modal-ambient-bg', `url("${FRAMES[1]}")`);
+      vBook.style.setProperty('--modal-ambient-bg', `url("${FRAMES[4]}")`);
     }
     if (vJoin) {
-      vJoin.style.setProperty('--modal-ambient-bg', `url("${FRAMES[5]}")`);
+      vJoin.style.setProperty('--modal-ambient-bg', `url("${FRAMES[6]}")`);
     }
 
     // 3. Inject atmospheric background engine into alternating non-alt sections

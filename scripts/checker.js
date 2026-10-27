@@ -90,8 +90,11 @@ htmlFiles.forEach(file => {
     }
   }
 
-  // 6. Check bracketed placeholders
-  const placeholderMatches = content.matchAll(/\[([^[\]]+)\]/g);
+  // 6. Check bracketed placeholders in HTML content (ignoring <style> and <script> contents)
+  const contentWithoutCode = content
+    .replace(/<style[\s\S]*?<\/style>/gi, '')
+    .replace(/<script[\s\S]*?<\/script>/gi, '');
+  const placeholderMatches = contentWithoutCode.matchAll(/\[([^[\]]+)\]/g);
   const registryContent = fs.existsSync(path.join(ROOT_DIR, 'PLACEHOLDERS.md'))
     ? fs.readFileSync(path.join(ROOT_DIR, 'PLACEHOLDERS.md'), 'utf8')
     : '';

@@ -26,10 +26,11 @@
   --bg-announcement: #E7EFEA;
 
   /* Warm Architectural Counter-Tones (Sanctuary Materials) */
-  --warm-linen: #F6F2EA;
-  --travertine-gold: #EAE2D3;
+  --warm-linen: #FAF7F2;
+  --travertine-gold: #EFEAE1;
+  --champagne-gold: #D9B56A;
   --sunlight-amber: rgba(217, 181, 106, 0.22);
-  --smoked-cypress: #0E211C;
+  --smoked-cypress: #071310;
   --warm-cedar-light: rgba(212, 163, 115, 0.18);
   --glass-bg: rgba(255, 255, 255, 0.62);
   --glass-border: rgba(255, 255, 255, 0.65);

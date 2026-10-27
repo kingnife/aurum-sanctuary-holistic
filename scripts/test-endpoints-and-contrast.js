@@ -4,6 +4,7 @@ const path = require('path');
 
 const urls = [
   'http://127.0.0.1:3000/',
+  'http://127.0.0.1:3000/care-center.html',
   'http://127.0.0.1:3000/services.html',
   'http://127.0.0.1:3000/availability.html',
   'http://127.0.0.1:3000/book.html',

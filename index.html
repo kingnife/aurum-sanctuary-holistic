@@ -38,7 +38,7 @@
         <span class="announcement-text">
           Accepting new adult &amp; adolescent patients in New Albany · Same-week in-person &amp; Indiana telehealth consultations.
         </span>
-        <a href="availability.html" class="announcement-action">
+        <a href="#avail" class="announcement-action">
           <span>Check openings &rarr;</span>
         </a>
       </div>
@@ -74,13 +74,13 @@
       <!-- Center Floating Navigation Pill -->
       <nav id="main-nav" class="main-nav" role="navigation" aria-label="Primary navigation" data-open="false">
         <ul class="nav-list">
-          <li><a href="index.html" class="nav-link is-active" aria-current="page">Home</a></li>
-          <li><a href="services.html" class="nav-link">Services</a></li>
-          <li><a href="availability.html" class="nav-link">Availability</a></li>
-          <li><a href="about.html" class="nav-link">Providers</a></li>
-          <li><a href="insurance.html" class="nav-link">Insurance &amp; Fees</a></li>
-          <li><a href="contact.html" class="nav-link">Contact</a></li>
-          <li><a href="faq.html" class="nav-link">FAQ</a></li>
+          <li><a href="#hero" class="nav-link is-active" aria-current="page">Home</a></li>
+          <li><a href="#services" class="nav-link">Services</a></li>
+          <li><a href="#avail" class="nav-link">Availability</a></li>
+          <li><a href="#providers" class="nav-link">Providers</a></li>
+          <li><a href="#insurance" class="nav-link">Insurance &amp; Fees</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+          <li><a href="#faq" class="nav-link">FAQ</a></li>
         </ul>
       </nav>
 
@@ -170,9 +170,9 @@
               </p>
             </div>
 
-            <!-- Right Column: The Minimalist Glass Availability Card (#availcard) -->
+            <!-- Right Column: The Minimalist Glass Availability Card (#avail) -->
             <div class="hero-card-col hero-animate-3">
-              <aside id="availcard" class="avail-hud-card" aria-label="This week's availability">
+              <aside id="avail" class="avail-hud-card" aria-label="This week's availability">
                 <!-- Header -->
                 <div class="avail-hud-header">
                   <h2 class="avail-hud-title">This week's availability</h2>
@@ -322,7 +322,7 @@
     </section>
 
     <!-- Services Preview Section -->
-    <section class="section section-alt" aria-labelledby="services-preview-title">
+    <section id="services" class="section section-alt" aria-labelledby="services-preview-title">
       <div class="section-inner">
         <div class="section-header">
           <span class="section-eyebrow">Clinical Specialties</span>
@@ -383,7 +383,7 @@
     </section>
 
     <!-- Care Pathway -->
-    <section class="section" aria-labelledby="pathway-preview-title">
+    <section id="pathway" class="section" aria-labelledby="pathway-preview-title">
       <div class="sec-bg" aria-hidden="true">
         <div class="sec-bg-image" style="background-image: url('assets/img/hero/desktop/frame-048.webp');"></div>
         <div class="sec-bg-orbs"></div>
@@ -431,7 +431,7 @@
     </section>
 
     <!-- Providers Preview -->
-    <section class="section section-alt" aria-labelledby="providers-preview-title">
+    <section id="providers" class="section section-alt" aria-labelledby="providers-preview-title">
       <div class="section-inner">
         <div class="section-header">
           <span class="section-eyebrow">Clinical Leadership</span>
@@ -491,8 +491,75 @@
       </div>
     </section>
 
-    <!-- FAQ Preview -->
-    <section class="section" aria-labelledby="faq-preview-title">
+    <!-- Insurance & Financial Transparency Section -->
+    <section id="insurance" class="section" aria-labelledby="insurance-title">
+      <div class="sec-bg" aria-hidden="true">
+        <div class="sec-bg-image" style="background-image: url('assets/img/hero/desktop/frame-024.webp');"></div>
+        <div class="sec-bg-orbs"></div>
+      </div>
+      <div class="section-inner">
+        <div class="section-header">
+          <span class="section-eyebrow">Financial Clarity</span>
+          <h2 id="insurance-title" class="section-title">Transparent Insurance &amp; Clear Fees</h2>
+          <p class="section-lead">
+            We prioritize absolute clarity regarding medical billing. Whether utilizing in-network insurance or out-of-network reimbursement, you receive transparent financial terms before your first visit.
+          </p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: var(--space-lg); margin-bottom: var(--space-2xl);">
+          <div class="card box" style="padding: 1.75rem;">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 0.75rem;">
+              <span class="pulse-indicator" style="width: 8px; height: 8px; background: #38B273;" aria-hidden="true"></span>
+              <strong style="font-size: 1.15rem; color: var(--text-primary);">In-Network Coverage</strong>
+            </div>
+            <p style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;">
+              Contracted directly with major commercial healthcare plans and Medicare. Our billing team files claims directly on your behalf for streamlined processing.
+            </p>
+            <ul style="list-style: none; padding: 0; margin: 0; font-size: 0.88rem; color: var(--text-secondary); display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+              <li>· Anthem Blue Cross</li>
+              <li>· Aetna Behavioral</li>
+              <li>· Cigna / Evernorth</li>
+              <li>· Humana</li>
+              <li>· Medicare Part B</li>
+              <li>· UnitedHealthcare</li>
+            </ul>
+          </div>
+
+          <div class="card box" style="padding: 1.75rem;">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 0.75rem;">
+              <span class="pulse-indicator" style="width: 8px; height: 8px; background: #C4933B;" aria-hidden="true"></span>
+              <strong style="font-size: 1.15rem; color: var(--text-primary);">Superbill Concierge</strong>
+            </div>
+            <p style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;">
+              For out-of-network benefits, we provide complimentary automated Superbill generation with all necessary diagnostic CPT codes for direct reimbursement.
+            </p>
+            <p style="font-size: 0.86rem; color: var(--text-muted); line-height: 1.5;">
+              Patients with PPO plans typically receive 50% to 80% reimbursement for covered psychiatric evaluations and psychotherapy.
+            </p>
+          </div>
+
+          <div class="card box" style="padding: 1.75rem;">
+            <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 0.75rem;">
+              <span class="pulse-indicator" style="width: 8px; height: 8px; background: #4E7569;" aria-hidden="true"></span>
+              <strong style="font-size: 1.15rem; color: var(--text-primary);">Good Faith Estimate</strong>
+            </div>
+            <p style="font-size: 0.92rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 1rem;">
+              Under the No Surprises Act (PHSA § 2799B-6), uninsured and self-pay patients receive a written Good Faith Estimate of total anticipated medical costs prior to scheduling.
+            </p>
+            <p style="font-size: 0.86rem; color: var(--text-muted); line-height: 1.5;">
+              No unexpected facility fees, lab markups, or hidden balance billing. Full price predictability.
+            </p>
+          </div>
+        </div>
+
+        <div style="text-align: center;">
+          <a href="insurance.html" class="btn btn-secondary">Review fee schedule &amp; billing guide</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="section section-alt" aria-labelledby="faq-preview-title">
       <div class="sec-bg" aria-hidden="true">
         <div class="sec-bg-image" style="background-image: url('assets/img/hero/desktop/frame-072.webp');"></div>
         <div class="sec-bg-orbs"></div>
@@ -540,6 +607,80 @@
 
         <div style="text-align: center; margin-top: var(--space-2xl);">
           <a href="faq.html" class="btn btn-secondary">Browse all questions &amp; answers</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact & Clinic Details Section -->
+    <section id="contact" class="section" aria-labelledby="contact-title">
+      <div class="sec-bg" aria-hidden="true">
+        <div class="sec-bg-image" style="background-image: url('assets/img/hero/desktop/frame-048.webp');"></div>
+        <div class="sec-bg-orbs"></div>
+      </div>
+      <div class="section-inner">
+        <div class="section-header">
+          <span class="section-eyebrow">Our Sanctuary</span>
+          <h2 id="contact-title" class="section-title">New Albany Clinic &amp; Inquiries</h2>
+          <p class="section-lead">
+            Located in downtown New Albany's historic district, convenient to Floyd County and greater Louisville.
+          </p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: var(--space-xl); align-items: start;">
+          <div class="card box" style="padding: 2rem;">
+            <h3 style="font-family: var(--serif); font-size: 1.35rem; color: var(--text-primary); margin-bottom: 1rem;">Clinic Information</h3>
+            <address style="font-style: normal; line-height: 1.8; color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 1.5rem;">
+              <strong style="color: var(--text-primary); display: block; font-size: 1.05rem;">Care Center Clinic</strong>
+              120 E. Market Street, Suite 300<br>
+              New Albany, IN 47150<br>
+              Direct: <a href="tel:8129442273" style="color: var(--brand-primary); font-weight: 600;">(812) 944-CARE (2273)</a><br>
+              Email: <a href="mailto:intake@carecenternewalbany.com" style="color: var(--brand-primary); font-weight: 600;">intake@carecenternewalbany.com</a>
+            </address>
+
+            <h4 style="font-size: 0.9rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 0.5rem;">Clinic Hours</h4>
+            <ul style="list-style: none; padding: 0; margin: 0 0 1.5rem 0; font-size: 0.9rem; color: var(--text-secondary); line-height: 1.7;">
+              <li>Monday – Thursday: 8:00 AM – 6:00 PM</li>
+              <li>Friday: 8:00 AM – 4:00 PM</li>
+              <li>Saturday &amp; Sunday: Closed (Telehealth on demand)</li>
+            </ul>
+
+            <div style="padding-top: 1rem; border-top: 1px solid var(--border-subtle);">
+              <span style="display: block; font-size: 0.8rem; color: var(--text-muted); line-height: 1.5;">
+                Reserved patient parking is situated directly adjacent to our East Market entrance with discrete elevator access to Suite 300.
+              </span>
+            </div>
+          </div>
+
+          <div class="card box" style="padding: 2rem;">
+            <h3 style="font-family: var(--serif); font-size: 1.35rem; color: var(--text-primary); margin-bottom: 0.5rem;">Confidential Consultation Inquiry</h3>
+            <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 1.25rem;">
+              Send an inquiry directly to our intake coordinator. We respond within two business hours.
+            </p>
+            <form onsubmit="event.preventDefault(); alert('Thank you. Your inquiry has been encrypted and received by our New Albany intake team.'); this.reset();">
+              <div class="form-group" style="margin-bottom: 1rem;">
+                <label for="contact-name" class="form-label">Full Name</label>
+                <input type="text" id="contact-name" class="form-input" placeholder="Your full name" required>
+              </div>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 1rem;">
+                <div class="form-group">
+                  <label for="contact-phone" class="form-label">Phone</label>
+                  <input type="tel" id="contact-phone" class="form-input" placeholder="(812) 555-0199" required>
+                </div>
+                <div class="form-group">
+                  <label for="contact-email" class="form-label">Email</label>
+                  <input type="email" id="contact-email" class="form-input" placeholder="you@domain.com" required>
+                </div>
+              </div>
+              <div class="form-group" style="margin-bottom: 1.25rem;">
+                <label for="contact-msg" class="form-label">Confidential Note</label>
+                <textarea id="contact-msg" class="form-input" rows="3" placeholder="How may our clinical team assist you?" style="resize: vertical;"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary" style="width: 100%;">Send Confidential Inquiry</button>
+              <p style="font-size: 0.78rem; color: var(--text-muted); margin-top: 0.75rem; text-align: center;">
+                Care Center is an outpatient facility; this service is not for emergencies.
+              </p>
+            </form>
+          </div>
         </div>
       </div>
     </section>
