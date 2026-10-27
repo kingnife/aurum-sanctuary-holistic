@@ -341,4 +341,73 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  /* ==========================================================================
+     6. Ambient Backdrop Engine & WebP Frame Binding
+     Automatically binds FRAMES[2], FRAMES[4], and FRAMES[5] as background
+     canvases to .sec.alt sections and #v-book / #v-join backdrops.
+     ========================================================================== */
+  const FRAMES = [
+    'assets/img/hero/desktop/frame-001.webp',
+    'assets/img/hero/desktop/frame-016.webp',
+    'assets/img/hero/desktop/frame-024.webp',
+    'assets/img/hero/desktop/frame-040.webp',
+    'assets/img/hero/desktop/frame-048.webp',
+    'assets/img/hero/desktop/frame-064.webp',
+    'assets/img/hero/desktop/frame-072.webp'
+  ];
+  window.FRAMES = FRAMES;
+
+  function initAmbientBackdropEngine() {
+    // 1. Bind to feature sanctuary sections (.sec.alt / .section-alt)
+    const altSections = document.querySelectorAll('.sec.alt, .section-alt');
+    altSections.forEach((sec, idx) => {
+      // Alternate between FRAMES[2] and FRAMES[4]
+      const frameIndex = idx % 2 === 0 ? 2 : 4;
+      const frameUrl = FRAMES[frameIndex];
+      sec.style.setProperty('--sec-alt-bg', `url("${frameUrl}")`);
+    });
+
+    // 2. Bind to #v-book and #v-join backdrops
+    const vBook = document.getElementById('v-book');
+    const vJoin = document.getElementById('v-join');
+    if (vBook) {
+      vBook.style.setProperty('--modal-ambient-bg', `url("${FRAMES[1]}")`);
+    }
+    if (vJoin) {
+      vJoin.style.setProperty('--modal-ambient-bg', `url("${FRAMES[5]}")`);
+    }
+
+    // 3. Inject atmospheric background engine into alternating non-alt sections
+    // (e.g. Care Pathway, Trust Strip, Insurance, Availability)
+    const targetSections = document.querySelectorAll('.sec:not(.alt):not(#hero), .section:not(.section-alt):not(.hero-section), .trust-strip');
+    targetSections.forEach((sec, idx) => {
+      // Skip if already contains .sec-bg
+      if (sec.querySelector('.sec-bg, .ambient-stage')) return;
+
+      // Select frame: FRAMES[2], FRAMES[4], FRAMES[6]
+      const frameMap = [2, 4, 6];
+      const frameIndex = frameMap[idx % frameMap.length];
+      const frameUrl = FRAMES[frameIndex];
+
+      const stage = document.createElement('div');
+      stage.className = 'sec-bg';
+      stage.setAttribute('aria-hidden', 'true');
+
+      const imgLayer = document.createElement('div');
+      imgLayer.className = 'sec-bg-image';
+      imgLayer.style.backgroundImage = `url("${frameUrl}")`;
+
+      const orbsLayer = document.createElement('div');
+      orbsLayer.className = 'sec-bg-orbs';
+
+      stage.appendChild(imgLayer);
+      stage.appendChild(orbsLayer);
+
+      // Prepend before content so it stays at z-index: 0
+      sec.prepend(stage);
+    });
+  }
+
+  initAmbientBackdropEngine();
+
 });

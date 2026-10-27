@@ -122,21 +122,21 @@
     </section>
 
     <!-- Main Interactive Availability Board -->
-    <section class="section" aria-labelledby="live-board-title">
+    <section class="section section-alt" aria-labelledby="live-board-title">
       <div class="section-inner">
-        <div style="max-width: 900px; margin: 0 auto; background: var(--bg-surface); border-radius: var(--radius-xl); border: 1px solid var(--border-subtle); padding: var(--space-2xl); box-shadow: var(--shadow-lg);">
+        <div id="av2" class="avail-hud-panel panel box" style="max-width: 900px; margin: 0 auto; border-radius: var(--radius-xl); padding: var(--space-2xl);">
           
-          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-xl); flex-wrap: wrap; gap: var(--space-md); border-bottom: 1px solid var(--border-subtle); padding-bottom: var(--space-lg);">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-xl); flex-wrap: wrap; gap: var(--space-md); border-bottom: 1px solid rgba(255, 255, 255, 0.15); padding-bottom: var(--space-lg);">
             <div>
-              <span class="section-eyebrow" style="margin-bottom:2px;">Live Clinic Status</span>
-              <h2 id="live-board-title" style="font-family: var(--font-heading); font-size: 1.6rem; font-weight: 600; color: var(--text-primary);">
+              <span class="section-eyebrow" style="margin-bottom:2px; color: #9AE6C2;">Live Clinic Status</span>
+              <h2 id="live-board-title" style="font-family: var(--font-heading); font-size: 1.6rem; font-weight: 600; color: #FAF8F5;">
                 Southern Indiana &amp; Telehealth Schedule
               </h2>
-              <p style="font-size: var(--text-xs); color: var(--text-muted); margin-top: 4px;">
+              <p style="font-size: var(--text-xs); color: rgba(245, 247, 246, 0.82); margin-top: 4px;">
                 Verified by Intake Coordination Office · New Albany, IN
               </p>
             </div>
-            <span class="avail-live-tag" style="padding: 6px 14px; font-size: 0.8rem;">
+            <span class="avail-live-tag chip" style="padding: 6px 14px; font-size: 0.8rem;">
               <span class="pulse-indicator" style="width:7px;height:7px;" aria-hidden="true"></span>
               <span>Accepting New Clients</span>
             </span>
@@ -144,33 +144,33 @@
 
           <!-- Day by Day Pills -->
           <div style="margin-bottom: var(--space-2xl);">
-            <p style="font-size: var(--text-sm); font-weight: 600; color: var(--text-secondary); margin-bottom: var(--space-sm);">
+            <p style="font-size: var(--text-sm); font-weight: 600; color: rgba(245, 247, 246, 0.88); margin-bottom: var(--space-sm);">
               Current Week Daytime Openings (Mon–Fri)
             </p>
             <div class="avail-days-row" style="grid-template-columns: repeat(5, 1fr); gap: 10px;">
               <div class="day-pill" style="padding: 12px 8px;">
                 <span class="day-pill-name" style="font-size: 0.8rem;">Monday</span>
-                <span style="font-size: var(--text-xs); color: var(--text-primary); font-weight: 600; display:block; margin: 4px 0;">3 Openings</span>
+                <span style="font-size: var(--text-xs); color: #FAF8F5; font-weight: 600; display:block; margin: 4px 0;">3 Openings</span>
                 <span class="day-pill-status day-status-open" style="width:9px; height:9px;" title="3 Openings"></span>
               </div>
               <div class="day-pill" style="padding: 12px 8px;">
                 <span class="day-pill-name" style="font-size: 0.8rem;">Tuesday</span>
-                <span style="font-size: var(--text-xs); color: var(--text-primary); font-weight: 600; display:block; margin: 4px 0;">2 Openings</span>
+                <span style="font-size: var(--text-xs); color: #FAF8F5; font-weight: 600; display:block; margin: 4px 0;">2 Openings</span>
                 <span class="day-pill-status day-status-open" style="width:9px; height:9px;" title="2 Openings"></span>
               </div>
               <div class="day-pill" style="padding: 12px 8px;">
                 <span class="day-pill-name" style="font-size: 0.8rem;">Wednesday</span>
-                <span style="font-size: var(--text-xs); color: var(--text-primary); font-weight: 600; display:block; margin: 4px 0;">Telehealth</span>
+                <span style="font-size: var(--text-xs); color: #FAF8F5; font-weight: 600; display:block; margin: 4px 0;">Telehealth</span>
                 <span class="day-pill-status day-status-limited" style="width:9px; height:9px;" title="Telehealth Only"></span>
               </div>
               <div class="day-pill" style="padding: 12px 8px;">
                 <span class="day-pill-name" style="font-size: 0.8rem;">Thursday</span>
-                <span style="font-size: var(--text-xs); color: var(--text-primary); font-weight: 600; display:block; margin: 4px 0;">4 Openings</span>
+                <span style="font-size: var(--text-xs); color: #FAF8F5; font-weight: 600; display:block; margin: 4px 0;">4 Openings</span>
                 <span class="day-pill-status day-status-open" style="width:9px; height:9px;" title="4 Openings"></span>
               </div>
               <div class="day-pill" style="padding: 12px 8px;">
                 <span class="day-pill-name" style="font-size: 0.8rem;">Friday</span>
-                <span style="font-size: var(--text-xs); color: var(--text-primary); font-weight: 600; display:block; margin: 4px 0;">1 Opening</span>
+                <span style="font-size: var(--text-xs); color: #FAF8F5; font-weight: 600; display:block; margin: 4px 0;">1 Opening</span>
                 <span class="day-pill-status day-status-open" style="width:9px; height:9px;" title="1 Opening"></span>
               </div>
             </div>
@@ -179,12 +179,12 @@
           <!-- Service Breakdown Cards -->
           <div style="display: flex; flex-direction: column; gap: var(--space-md); margin-bottom: var(--space-2xl);">
             <!-- Row 1 -->
-            <div style="display: flex; align-items: center; justify-content: space-between; padding: var(--space-lg); background: var(--bg-page); border: 1.5px solid var(--border-subtle); border-radius: var(--radius-md); flex-wrap: wrap; gap: var(--space-md);">
+            <div class="avail-service-row" style="display: flex; align-items: center; justify-content: space-between; padding: var(--space-lg); border-radius: var(--radius-md); flex-wrap: wrap; gap: var(--space-md);">
               <div style="max-width: 520px;">
-                <strong style="font-size: 1.1rem; color: var(--text-primary); display:block; margin-bottom: 4px;">
+                <strong style="font-size: 1.1rem; color: #FAF8F5; display:block; margin-bottom: 4px;">
                   New Patient Psychiatric Intake (60 Min)
                 </strong>
-                <p style="font-size: var(--text-xs); color: var(--text-secondary); line-height: 1.6;">
+                <p style="font-size: var(--text-xs); color: rgba(245, 247, 246, 0.85); line-height: 1.6;">
                   Physician-led diagnostic evaluation. Average lead time for new patient appointments is 3 to 5 business days. In-person at our New Albany clinic or secure telehealth.
                 </p>
               </div>
@@ -198,12 +198,12 @@
             </div>
 
             <!-- Row 2 -->
-            <div style="display: flex; align-items: center; justify-content: space-between; padding: var(--space-lg); background: var(--bg-page); border: 1.5px solid var(--border-subtle); border-radius: var(--radius-md); flex-wrap: wrap; gap: var(--space-md);">
+            <div class="avail-service-row" style="display: flex; align-items: center; justify-content: space-between; padding: var(--space-lg); border-radius: var(--radius-md); flex-wrap: wrap; gap: var(--space-md);">
               <div style="max-width: 520px;">
-                <strong style="font-size: 1.1rem; color: var(--text-primary); display:block; margin-bottom: 4px;">
+                <strong style="font-size: 1.1rem; color: #FAF8F5; display:block; margin-bottom: 4px;">
                   Conservative Medication Follow-Up (30 Min)
                 </strong>
-                <p style="font-size: var(--text-xs); color: var(--text-secondary); line-height: 1.6;">
+                <p style="font-size: var(--text-xs); color: rgba(245, 247, 246, 0.85); line-height: 1.6;">
                   For established patients undergoing pharmacotherapy review and dosage adjustments. Priority scheduling maintained for ongoing care continuity.
                 </p>
               </div>
@@ -214,12 +214,12 @@
             </div>
 
             <!-- Row 3 -->
-            <div style="display: flex; align-items: center; justify-content: space-between; padding: var(--space-lg); background: var(--bg-page); border: 1.5px solid var(--border-subtle); border-radius: var(--radius-md); flex-wrap: wrap; gap: var(--space-md);">
+            <div class="avail-service-row" style="display: flex; align-items: center; justify-content: space-between; padding: var(--space-lg); border-radius: var(--radius-md); flex-wrap: wrap; gap: var(--space-md);">
               <div style="max-width: 520px;">
-                <strong style="font-size: 1.1rem; color: var(--text-primary); display:block; margin-bottom: 4px;">
+                <strong style="font-size: 1.1rem; color: #FAF8F5; display:block; margin-bottom: 4px;">
                   Integrative Psychotherapy &amp; EMDR (50 Min)
                 </strong>
-                <p style="font-size: var(--text-xs); color: var(--text-secondary); line-height: 1.6;">
+                <p style="font-size: var(--text-xs); color: rgba(245, 247, 246, 0.85); line-height: 1.6;">
                   Individual counseling sessions with Marcus Reed, LCSW. Morning and late-afternoon appointment slots currently available.
                 </p>
               </div>

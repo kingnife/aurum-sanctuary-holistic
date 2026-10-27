@@ -25,6 +25,17 @@
   --bg-header-glass: rgba(250, 248, 245, 0.88);
   --bg-announcement: #E7EFEA;
 
+  /* Warm Architectural Counter-Tones (Sanctuary Materials) */
+  --warm-linen: #F6F2EA;
+  --travertine-gold: #EAE2D3;
+  --sunlight-amber: rgba(217, 181, 106, 0.22);
+  --smoked-cypress: #0E211C;
+  --warm-cedar-light: rgba(212, 163, 115, 0.18);
+  --glass-bg: rgba(255, 255, 255, 0.62);
+  --glass-border: rgba(255, 255, 255, 0.65);
+  --glass-highlight: inset 0 1px 0 0 rgba(255, 255, 255, 0.8);
+  --glass-shadow: 0 16px 40px -10px rgba(22, 33, 30, 0.08);
+
   /* Typography Colors */
   --text-primary: #11221D;              /* Deep Cypress Ink */
   --text-secondary: #334A42;            /* Dark Botanical */
@@ -133,6 +144,17 @@
   --bg-header-glass: rgba(9, 20, 18, 0.88);
   --bg-announcement: #0D261F;
 
+  /* Warm Architectural Counter-Tones (Dark Mode) */
+  --warm-linen: #141C1A;
+  --travertine-gold: #1A2622;
+  --sunlight-amber: rgba(222, 177, 99, 0.15);
+  --smoked-cypress: #081512;
+  --warm-cedar-light: rgba(212, 163, 115, 0.12);
+  --glass-bg: rgba(18, 38, 32, 0.52);
+  --glass-border: rgba(255, 255, 255, 0.14);
+  --glass-highlight: inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+  --glass-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.45);
+
   --text-primary: #FAF8F5;              /* Clean warm paper */
   --text-secondary: #C8D7D1;
   --text-muted: #8AA49B;
@@ -188,6 +210,17 @@
     --bg-surface-glass: rgba(15, 32, 28, 0.85);
     --bg-header-glass: rgba(9, 20, 18, 0.88);
     --bg-announcement: #0D261F;
+
+    /* Warm Architectural Counter-Tones (Dark Mode) */
+    --warm-linen: #141C1A;
+    --travertine-gold: #1A2622;
+    --sunlight-amber: rgba(222, 177, 99, 0.15);
+    --smoked-cypress: #081512;
+    --warm-cedar-light: rgba(212, 163, 115, 0.12);
+    --glass-bg: rgba(18, 38, 32, 0.52);
+    --glass-border: rgba(255, 255, 255, 0.14);
+    --glass-highlight: inset 0 1px 0 0 rgba(255, 255, 255, 0.12);
+    --glass-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.45);
 
     --text-primary: #FAF8F5;
     --text-secondary: #C8D7D1;

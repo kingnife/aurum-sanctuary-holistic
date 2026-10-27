@@ -123,8 +123,12 @@
 
     <!-- Contact & Map Information Grid -->
     <section class="section" aria-labelledby="contact-details-title">
+      <div class="sec-bg" aria-hidden="true">
+        <div class="sec-bg-image" style="background-image: url('assets/img/hero/desktop/frame-040.webp');"></div>
+        <div class="sec-bg-orbs"></div>
+      </div>
       <div class="section-inner">
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-3xl);">
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: var(--space-3xl);">
           
           <!-- Clinic Details -->
           <div>
@@ -136,7 +140,7 @@
             </div>
 
             <div style="display: flex; flex-direction: column; gap: var(--space-lg); margin-bottom: var(--space-2xl);">
-              <div style="background: var(--bg-surface); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); box-shadow: var(--shadow-sm);">
+              <div class="card box" style="padding: 1.5rem;">
                 <strong style="display: block; font-size: 1.1rem; color: var(--text-primary); margin-bottom: 4px;">Physical Location</strong>
                 <address style="font-style: normal; font-size: var(--text-sm); color: var(--text-secondary); line-height: 1.6;">
                   120 E. Market Street, Suite 300<br>
@@ -145,7 +149,7 @@
                 </address>
               </div>
 
-              <div style="background: var(--bg-surface); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); box-shadow: var(--shadow-sm);">
+              <div class="card box" style="padding: 1.5rem;">
                 <strong style="display: block; font-size: 1.1rem; color: var(--text-primary); margin-bottom: 4px;">Direct Communication</strong>
                 <p style="font-size: var(--text-sm); color: var(--text-secondary); line-height: 1.6;">
                   Phone: <a href="tel:8129442273" style="color:var(--brand-primary); font-weight:600;">(812) 944-CARE (2273)</a><br>
@@ -154,7 +158,7 @@
                 </p>
               </div>
 
-              <div style="background: var(--bg-surface); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); box-shadow: var(--shadow-sm);">
+              <div class="card box" style="padding: 1.5rem;">
                 <strong style="display: block; font-size: 1.1rem; color: var(--text-primary); margin-bottom: 4px;">Clinic Hours</strong>
                 <p style="font-size: var(--text-sm); color: var(--text-secondary); line-height: 1.6;">
                   Monday – Thursday: 8:30 AM – 6:00 PM<br>
@@ -163,7 +167,7 @@
                 </p>
               </div>
 
-              <div style="background: var(--bg-surface-sunk); padding: 1.5rem; border-radius: var(--radius-md); border: 1px solid var(--border-subtle); font-size: var(--text-xs); color: var(--text-muted); line-height: 1.6;">
+              <div class="panel box" style="padding: 1.5rem; font-size: var(--text-xs); color: var(--text-muted); line-height: 1.6;">
                 <strong>Parking &amp; Accessibility:</strong> Private reserved patient parking is available directly behind the building. Complete ADA accessibility with elevator access directly to Suite 300.
               </div>
             </div>
@@ -171,7 +175,7 @@
 
           <!-- Secure Intake Contact Form -->
           <div>
-            <div style="background: var(--bg-surface); padding: 2.5rem; border-radius: var(--radius-xl); border: 1.5px solid var(--border-subtle); box-shadow: var(--shadow-md);">
+            <div class="panel form box" style="padding: 2.5rem; border-radius: var(--radius-xl);">
               <h3 style="font-family: var(--font-heading); font-size: 1.4rem; font-weight: 600; color: var(--text-primary); margin-bottom: 6px;">
                 Send a Confidential Inquiry
               </h3>
