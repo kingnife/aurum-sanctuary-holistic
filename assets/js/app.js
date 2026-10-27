@@ -301,7 +301,7 @@ document.addEventListener('DOMContentLoaded', () => {
       } else if (lower.includes('appointment') || lower.includes('book') || lower.includes('first') || lower.includes('schedule')) {
         reply = `New patient evaluations are typically scheduled within 3 to 5 business days. You can begin directly through our <a href="#" data-open-modal="v-book" style="color:var(--brand-primary);font-weight:600;text-decoration:underline;">white-glove intake stepper</a>, selecting either our New Albany clinic or secure statewide telehealth.`;
       } else if (lower.includes('doctor') || lower.includes('provider') || lower.includes('psychiatrist') || lower.includes('vance')) {
-        reply = `Our clinical leadership includes <strong>Dr. Marcus Vance, MD</strong> (Board-Certified Adult &amp; Adolescent Psychiatrist, Johns Hopkins trained) and <strong>Sarah Lin-Holloway, LCSW</strong> (Lead Psychotherapist &amp; Clinical Director, EMDR certified).`;
+        reply = `Our clinical leadership includes <strong>Dr. Elena Vance, MD</strong> (Board-Certified Adult &amp; Adolescent Psychiatrist, Johns Hopkins trained) and <strong>Marcus Reed, LCSW</strong> (Lead Psychotherapist &amp; Clinical Director, EMDR certified).`;
       } else if (lower.includes('direction') || lower.includes('location') || lower.includes('address') || lower.includes('parking') || lower.includes('where')) {
         reply = `Our clinic is located in the historic medical district at <strong>120 E. Market Street, Suite 300, New Albany, IN 47150</strong>. Complimentary reserved patient parking is available directly behind the building.`;
       } else if (lower.includes('telehealth') || lower.includes('virtual') || lower.includes('online')) {

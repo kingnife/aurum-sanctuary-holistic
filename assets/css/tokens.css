@@ -16,33 +16,35 @@
   --accent-mint: #E4EDE8;               /* Muted Mint */
   --accent-gold: #C4933B;               /* Muted clinic gold */
 
-  /* Surfaces & Canvas (Light Mode) */
-  --bg-page: #FAF8F5;                   /* Base warm Paper */
-  --bg-surface: #FFFFFF;                /* Elevated cards */
-  --bg-surface-sunk: #F2EFE9;           /* Sunk / Alt sections */
+  /* Surfaces & Canvas (Quiet Luxury) */
+  --bg-page: #FAF8F5;                   /* Warm Alabaster */
+  --bg-surface: #FFFFFF;                /* Pure Paper */
+  --bg-surface-sunk: #F2EFE9;           /* Soft Stone */
+  --brand-cypress: #11221D;             /* Deep Cypress */
   --bg-surface-glass: rgba(255, 255, 255, 0.82);
   --bg-header-glass: rgba(250, 248, 245, 0.88);
   --bg-announcement: #E7EFEA;
 
   /* Typography Colors */
-  --text-primary: #12211C;              /* Forest Ink - 14.2:1 contrast */
-  --text-secondary: #334A42;            /* Dark Botanical - 8.2:1 contrast */
-  --text-muted: #5C736B;                /* Muted Sage - 5.1:1 contrast */
+  --text-primary: #11221D;              /* Deep Cypress Ink */
+  --text-secondary: #334A42;            /* Dark Botanical */
+  --text-muted: #5C736B;                /* Muted Sage */
   --text-inverse: #FAF8F5;
 
-  /* Borders & Dividers (Soft, Translucent, No harsh solid borders) */
-  --border-subtle: rgba(18, 33, 28, 0.07);
+  /* Borders & Dividers (Whisper-thin hairlines) */
+  --border-subtle: rgba(17, 34, 29, 0.07);
   --border-glass: rgba(255, 255, 255, 0.28);
-  --border-glass-dark: rgba(20, 56, 40, 0.12);
-  --border-focus: #2E9E68;
+  --border-glass-dark: rgba(17, 34, 29, 0.10);
+  --border-focus: #276446;
 
-  /* Diffuse Multi-Layer Shadows & Glass Elevation */
-  --shadow-sm: 0 2px 8px rgba(12, 28, 24, 0.04);
-  --shadow-md: 0 10px 30px -4px rgba(12, 28, 24, 0.08);
-  --shadow-lg: 0 24px 54px -12px rgba(12, 28, 24, 0.12);
+  /* Diffuse Multi-Layer Shadows & Elevation */
+  --shadow-sm: 0 2px 8px rgba(17, 34, 29, 0.04);
+  --shadow-md: 0 10px 30px -4px rgba(17, 34, 29, 0.06);
+  --shadow-lg: 0 20px 50px -12px rgba(17, 34, 29, 0.08);
+  --shadow-diffuse: 0 20px 50px -12px rgba(17, 34, 29, 0.08);
   --shadow-glass: 0 20px 48px rgba(0, 0, 0, 0.18);
-  --shadow-button: 0 4px 14px rgba(20, 56, 40, 0.22);
-  --shadow-button-hover: 0 8px 24px rgba(20, 56, 40, 0.32);
+  --shadow-button: 0 4px 14px rgba(39, 100, 70, 0.22);
+  --shadow-button-hover: 0 8px 24px rgba(39, 100, 70, 0.32);
 
   /* Status Tones */
   --status-open: #2E9E68;               /* Realtime Openings with pulsing radar aura */

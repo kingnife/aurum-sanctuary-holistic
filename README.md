@@ -20,7 +20,7 @@
   - `availability.html` — Real-time Mon–Fri schedule board with live status pulses
   - `book.html` — White-glove 3-step intake booking wizard
   - `session.html` — Virtual telehealth waiting room with A/V & 16ms latency diagnostics
-  - `about.html` — Clinical leadership: Dr. Marcus Vance, MD & Sarah Lin-Holloway, LCSW
+  - `about.html` — Clinical leadership: Dr. Elena Vance, MD & Marcus Reed, LCSW
   - `insurance.html` — In-network carriers, Superbill Concierge & No Surprises Act disclosure
   - `contact.html` — Suite details, parking, clinic hours & secure inquiry form
   - `faq.html` — Categorized accordion questions & answers

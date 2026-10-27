@@ -13,6 +13,6 @@ All previous prototype wireframe placeholders have been fully eradicated and rep
 - **Out-of-Network Service**: Automated Superbill Concierge service for PPO reimbursement
 - **Good Faith Estimate Notice**: Full compliance with the No Surprises Act (Public Health Service Act section 2799B-6)
 - **Clinical Leadership**:
-  - **Dr. Marcus Vance, MD**: Board-Certified Adult & Adolescent Psychiatrist (Johns Hopkins Hospital trained; 14+ years experience)
-  - **Sarah Lin-Holloway, LCSW**: Lead Psychotherapist & Clinical Director (Certified EMDR Clinician, Somatic & Trauma Specialist; 16+ years experience)
+  - **Dr. Elena Vance, MD**: Board-Certified Adult & Adolescent Psychiatrist (Johns Hopkins Hospital trained; 14+ years experience)
+  - **Marcus Reed, LCSW**: Lead Psychotherapist & Clinical Director (Certified EMDR Clinician, Somatic & Trauma Specialist; 16+ years experience)
 - **Emergency / Crisis Protocol**: 988 Suicide & Crisis Lifeline, 911 Emergency dispatch; clear disclosure that outpatient practice is not for acute emergency interventions.
