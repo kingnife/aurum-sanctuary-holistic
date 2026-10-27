@@ -1,66 +1,178 @@
 /**
  * Care Center - Luxury Single-Page Application Interactions
  * Manages:
- * 1. White-Glove Intake Booking Stepper (#v-book)
- * 2. Virtual Telehealth Waiting Room (#v-join) with Pre-call Diagnostics
- * 3. Care Concierge AI Drawer (#er) with 1.2s Typing Indicator & Crisis Safety Interceptor
- * 4. FAQ Accordion Interactions
- * 5. Modal State Machines & Focus Traps
+ * 1. Multi-Page View Switching (#v-home, #v-book, #v-join) & Section Scrolling
+ * 2. White-Glove Intake Booking Stepper (#v-book / #form)
+ * 3. Virtual Telehealth Waiting Room (#v-join / #jn) with Pre-call Diagnostics
+ * 4. Care Concierge AI Drawer (#er) with 1.2s Typing Indicator & Crisis Safety Interceptor
+ * 5. Mobile Navigation Menu
+ * 6. Ambient Sanctuary Backdrop Engine
  */
 
 document.addEventListener('DOMContentLoaded', () => {
 
   /* ==========================================================================
-     1. Modal State Machine (#v-book & #v-join)
+     1. Multi-Page View Switching & Smooth Section Scrolling Engine
+     Manages #v-home, #v-book, #v-join, and section scrolling
      ========================================================================== */
-  const bookModal = document.getElementById('v-book');
-  const joinModal = document.getElementById('v-join');
+  function showView(target, secId) {
+    if (!target) target = 'home';
+    const viewId = target.startsWith('v-') ? target : `v-${target}`;
+    const allViews = document.querySelectorAll('section.view');
+    let activeView = document.getElementById(viewId);
+    if (!activeView) {
+      activeView = document.getElementById('v-home');
+    }
 
-  function openModal(modal) {
-    if (!modal) return;
-    modal.classList.add('is-open');
-    modal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-    const firstInput = modal.querySelector('input, button:not(.modal-close-btn)');
-    if (firstInput) setTimeout(() => firstInput.focus(), 100);
-  }
-
-  function closeModal(modal) {
-    if (!modal) return;
-    modal.classList.remove('is-open');
-    modal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-  }
-
-  // Trigger bindings
-  document.querySelectorAll('[data-open-modal]').forEach(trigger => {
-    trigger.addEventListener('click', (e) => {
-      e.preventDefault();
-      const targetId = trigger.getAttribute('data-open-modal');
-      const targetModal = document.getElementById(targetId);
-      if (targetModal) openModal(targetModal);
+    // Toggle .on class on all views so only the active view displays
+    allViews.forEach(v => {
+      if (v === activeView) {
+        v.classList.add('on');
+        v.setAttribute('aria-hidden', 'false');
+      } else {
+        v.classList.remove('on');
+        v.setAttribute('aria-hidden', 'true');
+      }
     });
+
+    // Update active nav indicators in header
+    document.querySelectorAll('.nav-link').forEach(link => {
+      const linkSec = link.getAttribute('data-sec');
+      const linkGo = link.getAttribute('data-go');
+      if (secId && linkSec === secId) {
+        link.classList.add('is-active');
+        link.setAttribute('aria-current', 'page');
+      } else if (!secId && viewId === 'v-home' && linkGo === 'home' && !linkSec) {
+        link.classList.add('is-active');
+        link.setAttribute('aria-current', 'page');
+      } else {
+        link.classList.remove('is-active');
+        link.removeAttribute('aria-current');
+      }
+    });
+
+    // Close mobile nav drawer if open
+    const nav = document.getElementById('main-nav');
+    const toggle = document.getElementById('mobile-nav-toggle');
+    if (nav && nav.getAttribute('data-open') === 'true') {
+      nav.setAttribute('data-open', 'false');
+      if (toggle) toggle.setAttribute('aria-expanded', 'false');
+    }
+
+    // Section scroll or view top scroll
+    if (secId) {
+      setTimeout(() => {
+        const secElem = document.getElementById(secId);
+        if (secElem) {
+          secElem.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 60);
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+
+  // Global Click Delegation for [data-go]
+  document.addEventListener('click', (e) => {
+    const trigger = e.target.closest('[data-go]');
+    if (!trigger) return;
+
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.button !== 0) return;
+
+    e.preventDefault();
+    const go = trigger.getAttribute('data-go');
+    const sec = trigger.getAttribute('data-sec');
+
+    showView(go, sec);
+
+    // Update URL hash cleanly
+    if (go === 'home') {
+      if (sec) {
+        history.pushState(null, '', `#${sec}`);
+      } else {
+        history.pushState(null, '', window.location.pathname);
+      }
+    } else {
+      history.pushState(null, '', `#v-${go}`);
+    }
   });
 
-  document.querySelectorAll('.modal-close-btn, .modal-backdrop').forEach(closer => {
-    closer.addEventListener('click', (e) => {
-      if (e.target === closer || closer.classList.contains('modal-close-btn')) {
-        const modal = closer.closest('.modal-backdrop');
-        closeModal(modal);
+  // Backward compatibility with any lingering [data-open-modal]
+  document.querySelectorAll('[data-open-modal]').forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+      const targetModal = trigger.getAttribute('data-open-modal');
+      if (targetModal === 'v-book' || targetModal === 'book') {
+        e.preventDefault();
+        showView('book');
+        history.pushState(null, '', '#v-book');
+      } else if (targetModal === 'v-join' || targetModal === 'join') {
+        e.preventDefault();
+        showView('join');
+        history.pushState(null, '', '#v-join');
       }
     });
   });
 
+  // Modal / View close buttons
+  document.querySelectorAll('.modal-close-btn').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      showView('home');
+      history.pushState(null, '', window.location.pathname);
+    });
+  });
+
+  // Mobile nav toggle
+  const mobileNavToggle = document.getElementById('mobile-nav-toggle');
+  const mainNav = document.getElementById('main-nav');
+  if (mobileNavToggle && mainNav) {
+    mobileNavToggle.addEventListener('click', () => {
+      const isOpen = mainNav.getAttribute('data-open') === 'true';
+      mainNav.setAttribute('data-open', String(!isOpen));
+      mobileNavToggle.setAttribute('aria-expanded', String(!isOpen));
+    });
+  }
+
+  // Escape key handler
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
-      if (bookModal && bookModal.classList.contains('is-open')) closeModal(bookModal);
-      if (joinModal && joinModal.classList.contains('is-open')) closeModal(joinModal);
+      const activePageView = document.querySelector('section.view.page.on');
+      if (activePageView) {
+        showView('home');
+        history.pushState(null, '', window.location.pathname);
+      }
       if (conciergeDrawer && conciergeDrawer.classList.contains('is-open')) toggleConcierge(false);
     }
   });
 
+  // Hash Routing
+  function handleHashRoute() {
+    const rawHash = window.location.hash.replace('#', '');
+    if (!rawHash) {
+      showView('home');
+      return;
+    }
+    if (rawHash === 'v-book' || rawHash === 'book') {
+      showView('book');
+    } else if (rawHash === 'v-join' || rawHash === 'join') {
+      showView('join');
+    } else if (rawHash === 'v-home' || rawHash === 'home') {
+      showView('home');
+    } else {
+      const targetSec = document.getElementById(rawHash);
+      if (targetSec) {
+        showView('home', rawHash);
+      } else {
+        showView('home');
+      }
+    }
+  }
+
+  window.addEventListener('hashchange', handleHashRoute);
+  handleHashRoute();
+
   /* ==========================================================================
-     2. Intake Booking Stepper (#v-book)
+     2. Intake Booking Stepper (#v-book / #form)
      ========================================================================== */
   let currentStep = 1;
   const totalSteps = 3;
@@ -146,7 +258,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ==========================================================================
-     3. Telehealth Waiting Room (#v-join)
+     3. Telehealth Waiting Room (#v-join / #jn)
      ========================================================================== */
   const sessionCodeInput = document.getElementById('session-code');
   if (sessionCodeInput) {
@@ -197,7 +309,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (joinSessionForm && waitingRoomState) {
     joinSessionForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      const clientName = document.getElementById('patient-name')?.value || 'Client';
+      const clientName = document.getElementById('join-name')?.value || document.getElementById('patient-name')?.value || 'Client';
       joinSessionForm.style.display = 'none';
       waitingRoomState.style.display = 'block';
       const greeting = document.getElementById('waiting-patient-greeting');
@@ -297,30 +409,20 @@ document.addEventListener('DOMContentLoaded', () => {
       let reply = '';
 
       if (lower.includes('insurance') || lower.includes('coverage') || lower.includes('cost') || lower.includes('fee')) {
-        reply = `Care Center is an in-network provider for Anthem Blue Cross, Aetna, Cigna, Humana, Medicare, and UnitedHealthcare. We also provide full Superbill concierge support for out-of-network claims. Would you like to <a href="#" data-open-modal="v-book" style="color:var(--brand-primary);font-weight:600;text-decoration:underline;">schedule an intake</a> to verify your benefits?`;
+        reply = `Care Center is an in-network provider for Anthem Blue Cross, Aetna, Cigna, Humana, Medicare, and UnitedHealthcare. We also provide full Superbill concierge support for out-of-network claims. Would you like to <a href="#v-book" data-go="book" style="color:var(--brand-primary);font-weight:600;text-decoration:underline;">schedule an intake</a> to verify your benefits?`;
       } else if (lower.includes('appointment') || lower.includes('book') || lower.includes('first') || lower.includes('schedule')) {
-        reply = `New patient evaluations are typically scheduled within 3 to 5 business days. You can begin directly through our <a href="#" data-open-modal="v-book" style="color:var(--brand-primary);font-weight:600;text-decoration:underline;">white-glove intake stepper</a>, selecting either our New Albany clinic or secure statewide telehealth.`;
+        reply = `New patient evaluations are typically scheduled within 3 to 5 business days. You can begin directly through our <a href="#v-book" data-go="book" style="color:var(--brand-primary);font-weight:600;text-decoration:underline;">white-glove intake stepper</a>, selecting either our New Albany clinic or secure statewide telehealth.`;
       } else if (lower.includes('doctor') || lower.includes('provider') || lower.includes('psychiatrist') || lower.includes('vance')) {
         reply = `Our clinical leadership includes <strong>Dr. Elena Vance, MD</strong> (Board-Certified Adult &amp; Adolescent Psychiatrist, Johns Hopkins trained) and <strong>Marcus Reed, LCSW</strong> (Lead Psychotherapist &amp; Clinical Director, EMDR certified).`;
       } else if (lower.includes('direction') || lower.includes('location') || lower.includes('address') || lower.includes('parking') || lower.includes('where')) {
         reply = `Our clinic is located in the historic medical district at <strong>120 E. Market Street, Suite 300, New Albany, IN 47150</strong>. Complimentary reserved patient parking is available directly behind the building.`;
       } else if (lower.includes('telehealth') || lower.includes('virtual') || lower.includes('online')) {
-        reply = `We provide encrypted, HIPAA-compliant telehealth to patients throughout the entire state of Indiana. Existing patients can access the <a href="#" data-open-modal="v-join" style="color:var(--brand-primary);font-weight:600;text-decoration:underline;">Virtual Waiting Room</a> using their clinician code.`;
+        reply = `We provide encrypted, HIPAA-compliant telehealth to patients throughout the entire state of Indiana. Existing patients can access the <a href="#v-join" data-go="join" style="color:var(--brand-primary);font-weight:600;text-decoration:underline;">Virtual Waiting Room</a> using their clinician code.`;
       } else {
         reply = `Thank you for reaching out to Care Center. Our intake team would be delighted to assist you with specialized psychiatric evaluation, conservative medication management, or psychotherapy. You may also call us directly at <strong>(812) 944-CARE</strong>.`;
       }
 
       appendMessage('bot', reply);
-
-      // Rebind modal triggers inside bot replies
-      conciergeStream.querySelectorAll('[data-open-modal]').forEach(t => {
-        t.addEventListener('click', (e) => {
-          e.preventDefault();
-          toggleConcierge(false);
-          const target = document.getElementById(t.getAttribute('data-open-modal'));
-          if (target) openModal(target);
-        });
-      });
     }, 1200); // Realistic 1.2s typing pause
   }
 
@@ -342,11 +444,11 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ==========================================================================
-     6. Ambient Backdrop Engine & WebP Frame Binding
+     5. Ambient Backdrop Engine & WebP Frame Binding
      Automatically binds FRAMES[2], FRAMES[4], and FRAMES[5] as background
      canvases to .sec.alt sections and #v-book / #v-join backdrops.
      ========================================================================== */
-  const FRAMES = [
+  const AMBIENT_FRAMES = window.FRAMES || [
     'assets/img/hero/desktop/frame-001.webp',
     'assets/img/hero/desktop/frame-016.webp',
     'assets/img/hero/desktop/frame-024.webp',
@@ -355,15 +457,13 @@ document.addEventListener('DOMContentLoaded', () => {
     'assets/img/hero/desktop/frame-064.webp',
     'assets/img/hero/desktop/frame-072.webp'
   ];
-  window.FRAMES = FRAMES;
 
   function initAmbientBackdropEngine() {
     // 1. Bind to feature sanctuary sections (.sec.alt / .section-alt)
     const altSections = document.querySelectorAll('.sec.alt, .section-alt');
     altSections.forEach((sec, idx) => {
-      // Alternate between FRAMES[2] and FRAMES[4]
       const frameIndex = idx % 2 === 0 ? 2 : 4;
-      const frameUrl = FRAMES[frameIndex];
+      const frameUrl = AMBIENT_FRAMES[frameIndex % AMBIENT_FRAMES.length];
       sec.style.setProperty('--sec-alt-bg', `url("${frameUrl}")`);
     });
 
@@ -371,23 +471,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const vBook = document.getElementById('v-book');
     const vJoin = document.getElementById('v-join');
     if (vBook) {
-      vBook.style.setProperty('--modal-ambient-bg', `url("${FRAMES[4]}")`);
+      vBook.style.setProperty('--modal-ambient-bg', `url("${AMBIENT_FRAMES[4 % AMBIENT_FRAMES.length]}")`);
     }
     if (vJoin) {
-      vJoin.style.setProperty('--modal-ambient-bg', `url("${FRAMES[6]}")`);
+      vJoin.style.setProperty('--modal-ambient-bg', `url("${AMBIENT_FRAMES[6 % AMBIENT_FRAMES.length]}")`);
     }
 
     // 3. Inject atmospheric background engine into alternating non-alt sections
-    // (e.g. Care Pathway, Trust Strip, Insurance, Availability)
     const targetSections = document.querySelectorAll('.sec:not(.alt):not(#hero), .section:not(.section-alt):not(.hero-section), .trust-strip');
     targetSections.forEach((sec, idx) => {
-      // Skip if already contains .sec-bg
       if (sec.querySelector('.sec-bg, .ambient-stage')) return;
 
-      // Select frame: FRAMES[2], FRAMES[4], FRAMES[6]
       const frameMap = [2, 4, 6];
       const frameIndex = frameMap[idx % frameMap.length];
-      const frameUrl = FRAMES[frameIndex];
+      const frameUrl = AMBIENT_FRAMES[frameIndex % AMBIENT_FRAMES.length];
 
       const stage = document.createElement('div');
       stage.className = 'sec-bg';
@@ -403,7 +500,6 @@ document.addEventListener('DOMContentLoaded', () => {
       stage.appendChild(imgLayer);
       stage.appendChild(orbsLayer);
 
-      // Prepend before content so it stays at z-index: 0
       sec.prepend(stage);
     });
   }

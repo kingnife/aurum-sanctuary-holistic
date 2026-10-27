@@ -1,278 +1,94 @@
 /**
- * Care Center - Hero Scroll-Driven Frame Sequence
- * Production-grade, zero layout shift, WCAG compliant.
- *
- * Architecture:
- * - Frame 1 is a native <img> with fetchpriority="high" (LCP element).
- * - Canvas is sized to devicePixelRatio, with responsive "cover" fitting.
- * - Respects prefers-reduced-motion (frame 1 only).
- * - Respects Save-Data and slow 2G/3G connections (still image only).
- * - Keyframes loaded first (every 8th frame) for immediate scroll responsiveness.
- * - Remaining frames loaded in idle slices using requestIdleCallback / createImageBitmap.
- * - requestAnimationFrame updates canvas ONLY when the calculated frame index changes.
+ * Care Center - Hero Crossfade & Ken Burns Motion Engine
+ * 60fps smooth cosine easing crossfade and subtle breathing zoom.
  */
 
-(function initHeroSequence() {
-  // Check conditions that require staying on still image
-  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const connection = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
-  const isSaveData = connection && (connection.saveData === true || connection.effectiveType === 'slow-2g' || connection.effectiveType === '2g');
+var FRAMES = window.FRAMES || [
+  'assets/img/hero/desktop/frame-001.webp',
+  'assets/img/hero/desktop/frame-008.webp',
+  'assets/img/hero/desktop/frame-016.webp',
+  'assets/img/hero/desktop/frame-024.webp',
+  'assets/img/hero/desktop/frame-032.webp',
+  'assets/img/hero/desktop/frame-040.webp',
+  'assets/img/hero/desktop/frame-048.webp',
+  'assets/img/hero/desktop/frame-056.webp',
+  'assets/img/hero/desktop/frame-064.webp'
+];
+window.FRAMES = FRAMES;
 
-  if (prefersReducedMotion || isSaveData) {
-    // Keep still frame 1 only. No background fetching or scrubbing.
-    return;
-  }
+(function initHeroMotion() {
+  function startMotion() {
+    var still = document.getElementById('still');
+    var cv = document.getElementById('cv');
+    if (!FRAMES || !FRAMES.length || !still || !cv) return;
 
-  // Configuration
-  const isMobile = window.matchMedia('(max-width: 860px)').matches;
-  const TOTAL_FRAMES = isMobile ? 66 : 200;
-  const FRAME_DIR = isMobile ? 'assets/img/hero/mobile' : 'assets/img/hero/desktop';
-  const KEYFRAME_INTERVAL = 8;
+    // Set initial fallback frame immediately
+    still.src = FRAMES[0];
 
-  // DOM elements
-  const heroSection = document.getElementById('hero');
-  const heroStickyFrame = heroSection ? heroSection.querySelector('.hero-sticky-frame') : null;
-  const canvas = document.getElementById('cv') || document.getElementById('hero-canvas');
-  const stillImg = document.getElementById('still');
-  const lcpPicture = stillImg ? stillImg.closest('picture') : document.getElementById('hero-lcp-picture');
+    // Preload all base64 / WebP frames into Image objects
+    var imgs = FRAMES.map(function(src) {
+      var img = new Image();
+      img.src = src;
+      return img;
+    });
 
-  if (!heroSection || !canvas || !heroStickyFrame) return;
+    var ctx = cv.getContext('2d');
+    var w = (cv.width = 1152);
+    var h = (cv.height = 648);
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduceMotion) return;
 
-  const ctx = canvas.getContext('2d', { alpha: false });
-  if (!ctx) return;
+    var idx = 0;
+    var nextIdx = 1 % imgs.length;
+    var lastSwitch = performance.now();
+    var holdDuration = 3200; // ms per frame
+    var fadeDuration = 1400; // ms smooth crossfade
 
-  // Frame store: array of ImageBitmap or HTMLImageElement
-  const frames = new Array(TOTAL_FRAMES + 1).fill(null);
-  let currentRenderedFrame = 1;
-  let targetFrame = 1;
-  let isTicking = false;
-  let canvasWidth = 0;
-  let canvasHeight = 0;
-  let dpr = 1;
-  let preferredExt = 'webp'; // default to webp; test avif capability asynchronously
+    function render(now) {
+      var elapsed = now - lastSwitch;
+      var curImg = imgs[idx];
+      var nxtImg = imgs[nextIdx];
 
-  function pad(num) {
-    return String(num).padStart(3, '0');
-  }
+      if (curImg && curImg.complete && curImg.naturalWidth > 0) {
+        ctx.clearRect(0, 0, w, h);
+        // Subtle slow breathing zoom
+        var zoom = 1 + (elapsed / (holdDuration + fadeDuration)) * 0.035;
+        var dw = w * zoom;
+        var dh = h * zoom;
+        var dx = (w - dw) / 2;
+        var dy = (h - dh) / 2;
 
-  function getFrameUrl(index) {
-    return `${FRAME_DIR}/frame-${pad(index)}.${preferredExt}`;
-  }
+        ctx.globalAlpha = 1;
+        ctx.drawImage(curImg, dx, dy, dw, dh);
 
-  /**
-   * Cover-fit drawer: draws the frame centered and cropped to fill canvas without distortion.
-   */
-  function drawCover(image) {
-    if (!image) return;
-    const imgWidth = image.width;
-    const imgHeight = image.height;
-    if (!imgWidth || !imgHeight || !canvasWidth || !canvasHeight) return;
+        if (elapsed > holdDuration && nxtImg && nxtImg.complete && nxtImg.naturalWidth > 0) {
+          var alpha = Math.min(1, (elapsed - holdDuration) / fadeDuration);
+          // Smooth cosine easing for crossfade
+          var easedAlpha = 0.5 - 0.5 * Math.cos(alpha * Math.PI);
+          ctx.globalAlpha = easedAlpha;
+          ctx.drawImage(nxtImg, 0, 0, w, h);
 
-    const imgRatio = imgWidth / imgHeight;
-    const canvasRatio = canvasWidth / canvasHeight;
-
-    let renderW, renderH, offsetX, offsetY;
-
-    if (canvasRatio > imgRatio) {
-      renderW = canvasWidth;
-      renderH = canvasWidth / imgRatio;
-      offsetX = 0;
-      offsetY = (canvasHeight - renderH) / 2;
-    } else {
-      renderH = canvasHeight;
-      renderW = canvasHeight * imgRatio;
-      offsetX = (canvasWidth - renderW) / 2;
-      offsetY = 0;
-    }
-
-    ctx.drawImage(image, offsetX, offsetY, renderW, renderH);
-  }
-
-  /**
-   * Resizes the canvas to match client dimensions and devicePixelRatio.
-   */
-  function resizeCanvas() {
-    const rect = heroStickyFrame.getBoundingClientRect();
-    dpr = Math.min(window.devicePixelRatio || 1, 2); // cap at 2 for performance
-    canvasWidth = Math.round(rect.width * dpr);
-    canvasHeight = Math.round(rect.height * dpr);
-
-    if (canvas.width !== canvasWidth || canvas.height !== canvasHeight) {
-      canvas.width = canvasWidth;
-      canvas.height = canvasHeight;
-    }
-
-    // Redraw current or nearest available frame
-    renderNearestFrame(targetFrame);
-  }
-
-  /**
-   * Finds the closest loaded frame if the target frame is not yet decoded.
-   */
-  function renderNearestFrame(frameIdx) {
-    if (frames[frameIdx]) {
-      drawCover(frames[frameIdx]);
-      currentRenderedFrame = frameIdx;
-      return;
-    }
-
-    // Search outwards for closest loaded keyframe
-    for (let offset = 1; offset < TOTAL_FRAMES; offset++) {
-      const prev = frameIdx - offset;
-      const next = frameIdx + offset;
-      if (prev >= 1 && frames[prev]) {
-        drawCover(frames[prev]);
-        currentRenderedFrame = prev;
-        return;
-      }
-      if (next <= TOTAL_FRAMES && frames[next]) {
-        drawCover(frames[next]);
-        currentRenderedFrame = next;
-        return;
-      }
-    }
-  }
-
-  /**
-   * Loads a single frame using off-main-thread createImageBitmap where supported.
-   */
-  async function loadFrame(index) {
-    if (frames[index]) return frames[index];
-
-    const url = getFrameUrl(index);
-    try {
-      if (window.createImageBitmap && window.fetch) {
-        const response = await fetch(url);
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        const blob = await response.blob();
-        const bitmap = await createImageBitmap(blob);
-        frames[index] = bitmap;
-        return bitmap;
-      } else {
-        return new Promise((resolve, reject) => {
-          const img = new Image();
-          img.onload = () => {
-            frames[index] = img;
-            resolve(img);
-          };
-          img.onerror = reject;
-          img.src = url;
-        });
-      }
-    } catch (err) {
-      // Fallback silently if individual frame fails
-      return null;
-    }
-  }
-
-  /**
-   * Phase 1: Load Frame 1 and initialize canvas rendering.
-   */
-  async function initFirstFrame() {
-    resizeCanvas();
-    const first = await loadFrame(1);
-    if (first) {
-      drawCover(first);
-      canvas.classList.add('is-ready');
-      if (lcpPicture) {
-        lcpPicture.style.opacity = '0';
-      }
-    }
-
-    // Phase 2: Load keyframes immediately (every 8th frame)
-    loadKeyframes();
-  }
-
-  /**
-   * Phase 2: Load every 8th frame for responsive scrubbing.
-   */
-  async function loadKeyframes() {
-    const keyframeIndices = [];
-    for (let i = 1; i <= TOTAL_FRAMES; i += KEYFRAME_INTERVAL) {
-      if (i !== 1) keyframeIndices.push(i);
-    }
-    // Ensure final frame is included as a keyframe
-    if (!keyframeIndices.includes(TOTAL_FRAMES)) {
-      keyframeIndices.push(TOTAL_FRAMES);
-    }
-
-    // Load keyframes in small parallel batches
-    for (const idx of keyframeIndices) {
-      await loadFrame(idx);
-    }
-
-    // Phase 3: Fill remaining frames during idle time
-    scheduleIdleLoading();
-  }
-
-  /**
-   * Phase 3: Fill remaining frames using requestIdleCallback so main thread is never blocked.
-   */
-  function scheduleIdleLoading() {
-    const remaining = [];
-    for (let i = 1; i <= TOTAL_FRAMES; i++) {
-      if (!frames[i]) remaining.push(i);
-    }
-
-    let cursor = 0;
-
-    function processIdleBatch(deadline) {
-      while (cursor < remaining.length && (deadline.timeRemaining() > 3 || deadline.didTimeout)) {
-        const frameIdx = remaining[cursor++];
-        loadFrame(frameIdx);
-      }
-
-      if (cursor < remaining.length) {
-        if ('requestIdleCallback' in window) {
-          window.requestIdleCallback(processIdleBatch, { timeout: 1500 });
-        } else {
-          setTimeout(() => processIdleBatch({ timeRemaining: () => 10, didTimeout: true }), 60);
+          if (alpha >= 1) {
+            idx = nextIdx;
+            nextIdx = (idx + 1) % imgs.length;
+            lastSwitch = now;
+          }
         }
       }
+      requestAnimationFrame(render);
     }
 
-    if ('requestIdleCallback' in window) {
-      window.requestIdleCallback(processIdleBatch, { timeout: 1500 });
-    } else {
-      setTimeout(() => processIdleBatch({ timeRemaining: () => 10, didTimeout: true }), 60);
-    }
-  }
-
-  /**
-   * Calculates scroll progress through the sticky hero track and schedules frame render.
-   */
-  function onScroll() {
-    if (!isTicking) {
-      isTicking = true;
-      window.requestAnimationFrame(() => {
-        isTicking = false;
-        const rect = heroSection.getBoundingClientRect();
-        const scrollDistance = -rect.top;
-        const totalScrollable = rect.height - window.innerHeight;
-
-        if (totalScrollable <= 0) return;
-
-        const progress = Math.max(0, Math.min(1, scrollDistance / totalScrollable));
-        const newTargetFrame = Math.floor(progress * (TOTAL_FRAMES - 1)) + 1;
-
-        if (newTargetFrame !== currentRenderedFrame) {
-          targetFrame = newTargetFrame;
-          renderNearestFrame(targetFrame);
-        }
-      });
+    imgs[0].onload = function() {
+      requestAnimationFrame(render);
+    };
+    if (imgs[0].complete) {
+      requestAnimationFrame(render);
     }
   }
 
-  // Event Listeners
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', () => {
-    resizeCanvas();
-  }, { passive: true });
-
-  // Initialize once DOM is ready
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initFirstFrame);
+    document.addEventListener('DOMContentLoaded', startMotion);
   } else {
-    initFirstFrame();
+    startMotion();
   }
 })();
