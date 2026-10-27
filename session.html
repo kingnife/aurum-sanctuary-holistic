@@ -18,47 +18,41 @@
 <body>
   <a href="#main" class="skip-link">Skip to main content</a>
 
-    <!-- Top Patient Alert (#ann) -->
+      <!-- Top Patient Alert (#ann) -->
   <aside id="ann" class="announcement-bar" aria-label="Practice notification">
-    <div class="announcement-inner">
+    <div class="announcement-inner bar-ann">
       <div class="announcement-content">
         <span class="ann-live-dot" aria-hidden="true">
-          <span class="pulse-indicator"></span>
+          <span class="pulse-indicator ann-status-dot"></span>
         </span>
         <span class="announcement-text">
           Accepting new adult &amp; adolescent patients in New Albany · Same-week in-person &amp; Indiana telehealth consultations.
         </span>
         <a href="availability.html" class="announcement-action">
-          <span>Check openings</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          <span>Check openings &rarr;</span>
         </a>
       </div>
-      <button type="button" id="announcement-dismiss" class="announcement-dismiss" aria-label="Dismiss notification">
-        <svg width="15" height="15" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <line x1="12" y1="4" x2="4" y2="12"></line>
-          <line x1="4" y1="4" x2="12" y2="12"></line>
-        </svg>
-      </button>
+      <button type="button" id="annx" class="announcement-dismiss" aria-label="Dismiss notification">&times;</button>
     </div>
   </aside>
 
   <!-- Global Frosted Header -->
   <header class="site-header" role="banner">
-    <div class="header-inner">
+    <div class="header-inner bar">
       <a href="index.html" class="brand-link brand" aria-label="Care Center home">
         <div class="brand-icon-wrap" aria-hidden="true">
-          <svg viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="22" cy="22" r="20" stroke="rgba(217, 181, 106, 0.4)" stroke-width="1"/>
-            <circle cx="22" cy="22" r="16.5" stroke="rgba(217, 181, 106, 0.75)" stroke-width="1.2" stroke-dasharray="2 1.5"/>
-            <circle cx="22" cy="22" r="14" fill="rgba(20, 56, 40, 0.95)"/>
-            <circle cx="22" cy="2" r="1" fill="#D9B56A"/>
-            <circle cx="22" cy="42" r="1" fill="#D9B56A"/>
-            <circle cx="2" cy="22" r="1" fill="#D9B56A"/>
-            <circle cx="42" cy="22" r="1" fill="#D9B56A"/>
-            <path d="M22 28C22 28 15 23 15 16C15 12 18 8 22 8C26 8 29 12 29 16C29 23 22 28 22 28Z" stroke="#D9B56A" stroke-width="1.4" fill="rgba(76, 197, 133, 0.18)"/>
+          <svg width="44" height="44" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="22" cy="22" r="20" stroke="#C5A059" stroke-opacity="0.35" stroke-width="1"/>
+            <circle cx="22" cy="22" r="17" stroke="#C5A059" stroke-width="1.2" stroke-dasharray="2 1.5"/>
+            <circle cx="22" cy="22" r="14" fill="#143327"/>
+            <circle cx="22" cy="2" r="1" fill="#C5A059"/>
+            <circle cx="22" cy="42" r="1" fill="#C5A059"/>
+            <circle cx="2" cy="22" r="1" fill="#C5A059"/>
+            <circle cx="42" cy="22" r="1" fill="#C5A059"/>
+            <path d="M22 28C22 28 15 23 15 16C15 12 18 8 22 8C26 8 29 12 29 16C29 23 22 28 22 28Z" stroke="#C5A059" stroke-width="1.3" fill="rgba(76, 197, 133, 0.18)"/>
             <path d="M22 28V12" stroke="#E4EDE8" stroke-width="1.2" stroke-linecap="round"/>
-            <path d="M22 17C23.8 15.5 26 16 26 16" stroke="#D9B56A" stroke-width="1.1" stroke-linecap="round"/>
-            <path d="M22 21C20.2 19.5 18 20 18 20" stroke="#D9B56A" stroke-width="1.1" stroke-linecap="round"/>
+            <path d="M22 17C23.8 15.5 26 16 26 16" stroke="#C5A059" stroke-width="1.1" stroke-linecap="round"/>
+            <path d="M22 21C20.2 19.5 18 20 18 20" stroke="#C5A059" stroke-width="1.1" stroke-linecap="round"/>
           </svg>
         </div>
         <div class="brand-text-wrap">
@@ -67,27 +61,48 @@
         </div>
       </a>
 
+      <!-- Center Floating Navigation Pill -->
       <nav id="main-nav" class="main-nav" role="navigation" aria-label="Primary navigation" data-open="false">
         <ul class="nav-list">
           <li><a href="index.html" class="nav-link">Home</a></li>
           <li><a href="services.html" class="nav-link">Services</a></li>
           <li><a href="availability.html" class="nav-link">Availability</a></li>
-          <li><a href="about.html" class="nav-link">About &amp; providers</a></li>
-          <li><a href="insurance.html" class="nav-link">Insurance &amp; fees</a></li>
+          <li><a href="about.html" class="nav-link">Providers</a></li>
+          <li><a href="insurance.html" class="nav-link">Insurance &amp; Fees</a></li>
           <li><a href="contact.html" class="nav-link">Contact</a></li>
           <li><a href="faq.html" class="nav-link">FAQ</a></li>
         </ul>
       </nav>
 
+      <!-- Right Action Cluster -->
       <div class="header-actions">
-        <button type="button" id="theme-toggle-btn" class="theme-toggle-btn" aria-pressed="false" aria-label="Switch to dark theme">
-          <svg class="theme-toggle-icon theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-          <svg class="theme-toggle-icon theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <!-- Light / Dark Mode Toggle -->
+        <button type="button" id="theme" class="theme-toggle-btn" aria-pressed="false" aria-label="Switch theme">
+          <svg class="theme-toggle-icon theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="theme-toggle-icon theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
         </button>
-        <a href="session.html" class="btn btn-secondary btn-pill-sm is-active" aria-current="page">Join session</a>
-        <a href="book.html" class="btn btn-primary btn-pill-sm">Book an Intake</a>
+
+        <a href="session.html" class="btn btn-secondary">Join session</a>
+        <a href="book.html" class="btn btn-primary">Book an Intake</a>
+
         <button type="button" id="mobile-nav-toggle" class="mobile-nav-toggle" aria-expanded="false" aria-label="Open navigation menu">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
         </button>
       </div>
     </div>

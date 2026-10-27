@@ -6,7 +6,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Announcement Bar dismiss
   const announcementBar = document.getElementById('ann') || document.getElementById('announcement-bar');
-  const dismissBtn = document.getElementById('announcement-dismiss');
+  const dismissBtn = document.getElementById('annx') || document.getElementById('announcement-dismiss');
   const STORAGE_KEY = 'carecenter_announcement_dismissed_v1';
 
   if (announcementBar && dismissBtn) {

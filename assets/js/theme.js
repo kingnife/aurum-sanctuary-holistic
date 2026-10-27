@@ -6,7 +6,7 @@
 
 (function initTheme() {
   const STORAGE_KEY = 'carecenter_theme';
-  const themeToggleBtn = document.getElementById('theme-toggle-btn');
+  const getThemeBtn = () => document.getElementById('theme') || document.getElementById('theme-toggle-btn');
   const root = document.documentElement;
 
   // Read persisted preference or default to system
@@ -19,6 +19,7 @@
   }
 
   function applyTheme(theme) {
+    const themeToggleBtn = getThemeBtn();
     if (theme === 'dark') {
       root.setAttribute('data-theme', 'dark');
       if (themeToggleBtn) {
@@ -40,7 +41,7 @@
 
   // Bind toggle button after DOM is loaded
   document.addEventListener('DOMContentLoaded', () => {
-    const btn = document.getElementById('theme-toggle-btn');
+    const btn = getThemeBtn();
     if (!btn) return;
 
     btn.setAttribute('aria-pressed', root.getAttribute('data-theme') === 'dark' ? 'true' : 'false');

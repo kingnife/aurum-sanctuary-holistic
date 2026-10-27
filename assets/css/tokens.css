@@ -30,6 +30,8 @@
   --text-secondary: #334A42;            /* Dark Botanical */
   --text-muted: #5C736B;                /* Muted Sage */
   --text-inverse: #FAF8F5;
+  --text: #11221D;                      /* Direct alias for primary text */
+  --text2: #334A42;                     /* Direct alias for secondary text */
 
   /* Borders & Dividers (Whisper-thin hairlines) */
   --border-subtle: rgba(17, 34, 29, 0.07);
@@ -69,6 +71,8 @@
   --font-heading: 'Literata', Georgia, 'Times New Roman', serif;
   --font-body: 'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
   --font-mono: ui-monospace, 'Cascadia Code', 'Source Code Pro', monospace;
+  --serif: var(--font-heading);
+  --sans: var(--font-body);
 
   /* Fluid Scales */
   --text-xs: clamp(0.75rem, 0.72rem + 0.15vw, 0.8125rem);
@@ -133,6 +137,8 @@
   --text-secondary: #C8D7D1;
   --text-muted: #8AA49B;
   --text-inverse: #091412;
+  --text: #FAF8F5;
+  --text2: #C8D7D1;
 
   --border-subtle: rgba(255, 255, 255, 0.08);
   --border-glass: rgba(255, 255, 255, 0.15);
@@ -187,6 +193,8 @@
     --text-secondary: #C8D7D1;
     --text-muted: #8AA49B;
     --text-inverse: #091412;
+    --text: #FAF8F5;
+    --text2: #C8D7D1;
 
     --border-subtle: rgba(255, 255, 255, 0.08);
     --border-glass: rgba(255, 255, 255, 0.15);
